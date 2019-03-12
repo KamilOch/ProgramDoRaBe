@@ -1,6 +1,8 @@
 package proDoRaBe;
 
+import java.util.ArrayList;
+
 public class LiniaProdukcyjna {
 
-    private Maszyna maszyna;
+    private ArrayList<Maszyna> maszynay;
 }
