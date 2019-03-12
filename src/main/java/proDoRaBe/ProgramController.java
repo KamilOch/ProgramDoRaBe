@@ -28,8 +28,18 @@ public class ProgramController {
 
         raport.getDaneRaportu().dodajDaneRaportu(nazwaFirmy,adresFirmy, nazwaLinii,autorRaportu, telefonKontaktowyDoAutoraRaportu, adresEmailDoAutoraRaportu, osobaOdpowiedzialnaPoStronieZamawiajacejRaport, telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego, adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego );
 
-
-        return "daneRaportu_form";
+       // model.addAttribute("nazwaFirmy", nazwaFirmy);
+        /*
+        model.addAttribute("adresFirmy",adresFirmy);
+        model.addAttribute("nazwaLinii",nazwaLinii);
+        model.addAttribute("autorRaportu",autorRaportu);
+        model.addAttribute("telefonKontaktowyDoAutoraRaportu",telefonKontaktowyDoAutoraRaportu);
+        model.addAttribute("adresEmailDoAutoraRaportu",adresEmailDoAutoraRaportu);
+        model.addAttribute("osobaOdpowiedzialnaPoStronieZamawiajacejRaport",osobaOdpowiedzialnaPoStronieZamawiajacejRaport);
+        model.addAttribute("telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego",telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego);
+        model.addAttribute("adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego",adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego);
+*/
+        return "redirect:/daneRaportu_form";
     }
 
     @RequestMapping("/pierwszaStrona_form")
