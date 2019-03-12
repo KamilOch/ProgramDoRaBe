@@ -9,4 +9,13 @@ public class Raport {
         this.daneRaportu = daneRaportu;
         this.liniaProdukcyjna = liniaProdukcyjna;
     }
+
+    public DaneRaportu getDaneRaportu() {
+        return daneRaportu;
+    }
+
+    public LiniaProdukcyjna getLiniaProdukcyjna() {
+        return liniaProdukcyjna;
+    }
+
 }
