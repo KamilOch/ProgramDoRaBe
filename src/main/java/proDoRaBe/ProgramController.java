@@ -27,9 +27,8 @@ public class ProgramController {
     ) {
 
         raport.getDaneRaportu().dodajDaneRaportu(nazwaFirmy,adresFirmy, nazwaLinii,autorRaportu, telefonKontaktowyDoAutoraRaportu, adresEmailDoAutoraRaportu, osobaOdpowiedzialnaPoStronieZamawiajacejRaport, telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego, adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego );
-
-       // model.addAttribute("nazwaFirmy", nazwaFirmy);
-        /*
+/*
+        model.addAttribute("nazwaFirmy", nazwaFirmy);
         model.addAttribute("adresFirmy",adresFirmy);
         model.addAttribute("nazwaLinii",nazwaLinii);
         model.addAttribute("autorRaportu",autorRaportu);
@@ -39,7 +38,7 @@ public class ProgramController {
         model.addAttribute("telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego",telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego);
         model.addAttribute("adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego",adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego);
 */
-        return "redirect:/daneRaportu_form";
+        return "/daneRaportu_form";
     }
 
     @RequestMapping("/pierwszaStrona_form")

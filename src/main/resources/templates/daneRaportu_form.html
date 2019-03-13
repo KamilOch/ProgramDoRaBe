@@ -7,10 +7,9 @@
 <body>
 <h1>Podaj podstawowe dane do raportu</h1>
 
-<form action="/daneRaportu_form">
+<form action="/daneRaportu">
 
     <h3>Podaj nazwę firmy</h3>
-    <div class="nazwaFirmy" th:text="${nazwaFirmy}"></div>
     <input type="text" name="nazwaFirmy"/>
     <h3>Podaj adres firmy</h3>
     <input type="text" name="adresFirmy"/>
@@ -31,6 +30,10 @@
 
 
     <p><input type="submit" value="Wprowadz podstawowe dane do raportu"/></p>
+</form>
+
+<form action="/daneRaportu_dane">
+    <p><input type="submit" value="Zobacz wprowadzone dane"/></p>
 </form>
 
 <form action="/">
