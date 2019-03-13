@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProgramController {
 
-    Raport raport = new Raport (new DaneRaportu(), new LiniaProdukcyjna());
+    DaneRaportu daneRaportu = new DaneRaportu();
+    LiniaProdukcyjna liniaProdukcyjna = new LiniaProdukcyjna();
+    Raport raport = new Raport (daneRaportu, liniaProdukcyjna);
 
 
 
-    @RequestMapping("/daneRaportu")
-    public String DaneRaportu(
+    @RequestMapping("/dodajDaneRaportu")
+    public String dodajDaneRaportu(
             @RequestParam(value = "nazwaFirmy", required = false) String nazwaFirmy,
             @RequestParam(value = "adresFirmy", required = false) String  adresFirmy,
             @RequestParam(value = "nazwaLinii", required = false) String nazwaLinii,
@@ -26,20 +28,28 @@ public class ProgramController {
             Model model
     ) {
 
-        raport.getDaneRaportu().dodajDaneRaportu(nazwaFirmy,adresFirmy, nazwaLinii,autorRaportu, telefonKontaktowyDoAutoraRaportu, adresEmailDoAutoraRaportu, osobaOdpowiedzialnaPoStronieZamawiajacejRaport, telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego, adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego );
-/*
-        model.addAttribute("nazwaFirmy", nazwaFirmy);
-        model.addAttribute("adresFirmy",adresFirmy);
-        model.addAttribute("nazwaLinii",nazwaLinii);
-        model.addAttribute("autorRaportu",autorRaportu);
-        model.addAttribute("telefonKontaktowyDoAutoraRaportu",telefonKontaktowyDoAutoraRaportu);
-        model.addAttribute("adresEmailDoAutoraRaportu",adresEmailDoAutoraRaportu);
-        model.addAttribute("osobaOdpowiedzialnaPoStronieZamawiajacejRaport",osobaOdpowiedzialnaPoStronieZamawiajacejRaport);
-        model.addAttribute("telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego",telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego);
-        model.addAttribute("adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego",adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego);
-*/
-        return "/daneRaportu_form";
+        daneRaportu.dodajDaneRaportu(nazwaFirmy,adresFirmy, nazwaLinii,autorRaportu, telefonKontaktowyDoAutoraRaportu, adresEmailDoAutoraRaportu, osobaOdpowiedzialnaPoStronieZamawiajacejRaport, telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego, adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego );
+
+        return "redirect:/dodawanie";
     }
+
+    @RequestMapping ("/dodawanie")
+    public String dodawanie (
+            Model model
+    ) {
+        model.addAttribute("nazwaFirmy", daneRaportu.getNazwaFirmy());
+        model.addAttribute("adresFirmy",daneRaportu.getAdresFirmy());
+        model.addAttribute("nazwaLinii",daneRaportu.getNazwaLinii());
+        model.addAttribute("autorRaportu",daneRaportu.getAutorRaportu());
+        model.addAttribute("telefonKontaktowyDoAutoraRaportu",daneRaportu.getTelefonKontaktowyDoAutoraRaportu());
+        model.addAttribute("adresEmailDoAutoraRaportu",daneRaportu.getAdresEmailDoAutoraRaportu());
+        model.addAttribute("osobaOdpowiedzialnaPoStronieZamawiajacejRaport",daneRaportu.getOsobaOdpowiedzialnaPoStronieZamawiajacejRaport());
+        model.addAttribute("telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego",daneRaportu.getTelefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego());
+        model.addAttribute("adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego",daneRaportu.getAdresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego());
+
+        return "daneRaportu_form";
+    }
+
 
     @RequestMapping("/pierwszaStrona_form")
     public String StronaPoczatkowa() {

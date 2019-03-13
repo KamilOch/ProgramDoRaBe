@@ -24,4 +24,40 @@ public class DaneRaportu {
         this.adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego = adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego;
     }
 
+
+    public String getNazwaFirmy() {
+        return nazwaFirmy;
+    }
+
+    public String getAdresFirmy() {
+        return adresFirmy;
+    }
+
+    public String getNazwaLinii() {
+        return nazwaLinii;
+    }
+
+    public String getAutorRaportu() {
+        return autorRaportu;
+    }
+
+    public String getTelefonKontaktowyDoAutoraRaportu() {
+        return telefonKontaktowyDoAutoraRaportu;
+    }
+
+    public String getAdresEmailDoAutoraRaportu() {
+        return adresEmailDoAutoraRaportu;
+    }
+
+    public String getOsobaOdpowiedzialnaPoStronieZamawiajacejRaport() {
+        return osobaOdpowiedzialnaPoStronieZamawiajacejRaport;
+    }
+
+    public String getTelefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego() {
+        return telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego;
+    }
+
+    public String getAdresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego() {
+        return adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego;
+    }
 }
