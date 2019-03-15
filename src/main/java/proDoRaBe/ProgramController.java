@@ -18,7 +18,6 @@ public class ProgramController {
     Raport raport = new Raport (daneRaportu, liniaProdukcyjna);
 
 
-
     @RequestMapping("/dodajDaneDlaRaportu")
     public String dodajDaneDlaRaportu(
             @RequestParam(value = "tytulRaportu", required = false) String tytulRaportu,
