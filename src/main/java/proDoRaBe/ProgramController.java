@@ -8,47 +8,50 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProgramController {
 
+    DaneZamawiajacegoRaport daneZamawiajacegoRaport = new DaneZamawiajacegoRaport();
+    DaneWykonujacegoRaport daneWykonujacegoRaport = new DaneWykonujacegoRaport();
+    DaneDlaRaportu daneDlaRaportu = new DaneDlaRaportu();
+
     DaneRaportu daneRaportu = new DaneRaportu();
     LiniaProdukcyjna liniaProdukcyjna = new LiniaProdukcyjna();
+
     Raport raport = new Raport (daneRaportu, liniaProdukcyjna);
 
 
 
-    @RequestMapping("/dodajDaneRaportu")
+    @RequestMapping("/dodajDaneDlaRaportu")
     public String dodajDaneRaportu(
-            @RequestParam(value = "nazwaFirmy", required = false) String nazwaFirmy,
-            @RequestParam(value = "adresFirmy", required = false) String  adresFirmy,
-            @RequestParam(value = "nazwaLinii", required = false) String nazwaLinii,
-            @RequestParam(value = "autorRaportu", required = false) String autorRaportu,
-            @RequestParam(value = "telefonKontaktowyDoAutoraRaportu", required = false) String telefonKontaktowyDoAutoraRaportu,
-            @RequestParam(value = "adresEmailDoAutoraRaportu", required = false) String adresEmailDoAutoraRaportu,
-            @RequestParam(value = "osobaOdpowiedzialnaPoStronieZamawiajacejRaport", required = false) String osobaOdpowiedzialnaPoStronieZamawiajacejRaport,
-            @RequestParam(value = "telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego", required = false) String telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego,
-            @RequestParam(value = "adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego", required = false) String adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego,
+            @RequestParam(value = "tytulRaportu", required = false) String tytulRaportu,
+            @RequestParam(value = "numerDokumentu", required = false) String  numerDokumentu,
+            @RequestParam(value = "wersjaDokumentu", required = false) String wersjaDokumentu,
+            @RequestParam(value = "dataDokumentu", required = false) String dataDokumentu,
             Model model
     ) {
-
-        daneRaportu.dodajDaneRaportu(nazwaFirmy,adresFirmy, nazwaLinii,autorRaportu, telefonKontaktowyDoAutoraRaportu, adresEmailDoAutoraRaportu, osobaOdpowiedzialnaPoStronieZamawiajacejRaport, telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego, adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego );
-
-        return "redirect:/dodawanie";
+        daneDlaRaportu.dodajDaneDlaRaportu(tytulRaportu, numerDokumentu, wersjaDokumentu, dataDokumentu );
+        return "redirect:/dodawanieDanychDlaRaportu";
     }
 
-    @RequestMapping ("/dodawanie")
+    @RequestMapping ("/dodawanieDanychDlaRaportu")
     public String dodawanie (
             Model model
     ) {
-        model.addAttribute("nazwaFirmy", daneRaportu.getNazwaFirmy());
-        model.addAttribute("adresFirmy",daneRaportu.getAdresFirmy());
-        model.addAttribute("nazwaLinii",daneRaportu.getNazwaLinii());
-        model.addAttribute("autorRaportu",daneRaportu.getAutorRaportu());
-        model.addAttribute("telefonKontaktowyDoAutoraRaportu",daneRaportu.getTelefonKontaktowyDoAutoraRaportu());
-        model.addAttribute("adresEmailDoAutoraRaportu",daneRaportu.getAdresEmailDoAutoraRaportu());
-        model.addAttribute("osobaOdpowiedzialnaPoStronieZamawiajacejRaport",daneRaportu.getOsobaOdpowiedzialnaPoStronieZamawiajacejRaport());
-        model.addAttribute("telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego",daneRaportu.getTelefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego());
-        model.addAttribute("adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego",daneRaportu.getAdresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego());
+        model.addAttribute("tytulRaportu", daneDlaRaportu.getTytulRaportu());
+        model.addAttribute("numerDokumentu",daneDlaRaportu.getNumerDokumentu());
+        model.addAttribute("wersjaDokumentu",daneDlaRaportu.getWersjaDokumentu());
+        model.addAttribute("dataDokumentu",daneDlaRaportu.getDataDokumentu());
 
-        return "daneRaportu_form";
+        return "daneDlaRaportu_form";
     }
+
+
+
+
+
+
+
+
+
+
 
 
     @RequestMapping("/pierwszaStrona_form")

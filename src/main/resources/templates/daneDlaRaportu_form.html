@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Podaj podstawowe dane do raportu</h1>
+
+<form action="/dodajDaneDlaRaportu">
+
+    <tr><th>Podaj tytuł raportu</th></tr>
+    <input type="text" name="tytulRaportu"/>
+    <tr><th>Podaj numer dokumentu</th></tr>
+    <input type="text" name="numerDokumentu"/>
+    <tr><th>Podaj wersje dokumentu</th></tr>
+    <input type="text" name="wersjaDokumentu"/>
+    <tr><th>Podaj datę dokumentu</th></tr>
+    <input type="text" name="dataDokumentu"/>
+
+    <p><input type="submit" value="Wprowadz podstawowe dane do raportu"/></p>
+</form>
+
+<form action="/">
+    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
+</form>
+
+<h3>Obecnie podane dane to:</h3>
+<tr><th>tytuł raportu:</th></tr>
+<div class="tytulRaportu" th:text="${tytulRaportu}"></div>
+
+<tr><th>numer dokumentu</th></tr>
+<div class="numerDokumentu" th:text="${numerDokumentu}"></div>
+
+<tr><th>wersja dokumentu</th></tr>
+<div class="wersjaDokumentu" th:text="${wersjaDokumentu}"></div>
+
+<tr><th>data dokumentu</th></tr>
+<div class="dataDokumentu" th:text="${dataDokumentu}"></div>
+
+</body>
+</html>
