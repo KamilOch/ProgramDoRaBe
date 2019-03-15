@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Podaj podstawowe dane do raportu</h1>
+
+<form action="/dodajDaneZamawiajacegoRaport">
+
+    <tr><th>Podaj nazwę firmy</th></tr>
+    <input type="text" name="nazwaFirmy"/>
+    <tr><th>Podaj adres firm</th></tr>
+    <input type="text" name="adresFirmy"/>
+    <tr><th>Podaj email firmowy</th></tr>
+    <input type="text" name="adresEmjlowyFirmy"/>
+    <tr><th>Podaj telefon firmowy</th></tr>
+    <input type="text" name="telefonKontaktowyFirmy"/>
+    <tr><th>Podaj osobe odpowiedzialną po stronie zamawiającej raport</th></tr>
+    <input type="text" name="osobaOdpowiedzialnaPoStronieZamawiajacejRaport"/>
+    <tr><th>Podaj telefon do osoby odpowiedzialnej po stronie zamawiającej raport</th></tr>
+    <input type="email" name="telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego"/>
+    <tr><th>Podaj email do osoby odpowiedzialnej po stronie zamawiającej raport</th></tr>
+    <input type="text" name="adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego"/>
+
+    <p><input type="submit" value="Wprowadz dane zamawiajacego raport"/></p>
+</form>
+
+<form action="/">
+    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
+</form>
+
+<h3>Obecnie podane dane to:</h3>
+<tr><th>nazwa firmy</th></tr>
+<div class="nazwaFirmy" th:text="${nazwaFirmy}"></div>
+<tr><th>adres firmy</th></tr>
+<div class="adresFirmy" th:text="${adresFirmy}"></div>
+<tr><th>adres email</th></tr>
+<div class="adresEmjlowyFirmy" th:text="${adresEmjlowyFirmy}"></div>
+<tr><th>telefon firmowy</th></tr>
+<div class="telefonKontaktowyFirmy" th:text="${telefonKontaktowyFirmy}"></div>
+<tr><th>osoba odpowiedzialna po stronie zamawiającego raport</th></tr>
+<div class="osobaOdpowiedzialnaPoStronieZamawiajacejRaport" th:text="${osobaOdpowiedzialnaPoStronieZamawiajacejRaport}"></div>
+<tr><th>telefon kontaktory do osoby odpowiedzialnej po stronie zamawiajacego raport</th></tr>
+<div class="telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego" th:text="${telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego}"></div>
+<tr><th>email kontaktory do osoby odpowiedzialnej po stronie zamawiajacego raport</th></tr>
+<div class="adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego" th:text="${adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego}"></div>
+
+</body>
+</html>

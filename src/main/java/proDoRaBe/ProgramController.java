@@ -81,7 +81,35 @@ public class ProgramController {
 
 
 
+    @RequestMapping("/dodajDaneZamawiajacegoRaport")
+    public String dodajDaneZamawiajacegoRaport(
+            @RequestParam(value = "nazwaFirmy", required = false) String nazwaFirmy,
+            @RequestParam(value = "adresFirmy", required = false) String  adresFirmy,
+            @RequestParam(value = "adresEmjlowyFirmy", required = false) String adresEmjlowyFirmy,
+            @RequestParam(value = "telefonKontaktowyFirmy", required = false) String telefonKontaktowyFirmy,
+            @RequestParam(value = "osobaOdpowiedzialnaPoStronieZamawiajacejRaport", required = false) String osobaOdpowiedzialnaPoStronieZamawiajacejRaport,
+            @RequestParam(value = "telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego", required = false) String telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego,
+            @RequestParam(value = "adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego", required = false) String adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego,
+            Model model
+    ) {
+        daneZamawiajacegoRaport.dodajDaneZamawiajacegoRaport(nazwaFirmy, adresFirmy, adresEmjlowyFirmy, telefonKontaktowyFirmy, osobaOdpowiedzialnaPoStronieZamawiajacejRaport, telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego, adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego);
+        return "redirect:/dodawanieDaneZamawiajacegoRaport";
+    }
 
+    @RequestMapping ("/dodawanieDaneZamawiajacegoRaport")
+    public String dodawanieDaneZamawiajacegoRaport (
+            Model model
+    ) {
+        model.addAttribute("nazwaFirmy", daneZamawiajacegoRaport.getNazwaFirmy());
+        model.addAttribute("adresFirmy",daneZamawiajacegoRaport.getAdresFirmy());
+        model.addAttribute("adresEmjlowyFirmy",daneZamawiajacegoRaport.getAdresEmjlowyFirmy());
+        model.addAttribute("telefonKontaktowyFirmy",daneZamawiajacegoRaport.getTelefonKontaktowyFirmy());
+        model.addAttribute("osobaOdpowiedzialnaPoStronieZamawiajacejRaport",daneZamawiajacegoRaport.getOsobaOdpowiedzialnaPoStronieZamawiajacejRaport());
+        model.addAttribute("telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego",daneZamawiajacegoRaport.getTelefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego());
+        model.addAttribute("adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego",daneZamawiajacegoRaport.getAdresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego());
+
+        return "daneZamawiajacegoRaport_form";
+    }
 
 
 
