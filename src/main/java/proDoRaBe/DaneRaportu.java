@@ -2,8 +2,11 @@ package proDoRaBe;
 
 public class DaneRaportu {
 
+
+
     private DaneZamawiajacegoRaport;
     private DaneWykonujacegoRaport;
+    private DaneDlaRaportu;
 
     public void dodajDaneRaportu (String nazwaFirmy, String adresFirmy, String nazwaLinii, String autorRaportu, String telefonKontaktowyDoAutoraRaportu, String adresEmailDoAutoraRaportu, String osobaOdpowiedzialnaPoStronieZamawiajacejRaport, String telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego, String adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego){
 
