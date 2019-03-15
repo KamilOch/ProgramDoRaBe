@@ -2,15 +2,8 @@ package proDoRaBe;
 
 public class DaneRaportu {
 
-    private String nazwaFirmy;
-    private String adresFirmy;
-    private String nazwaLinii;
-    private String autorRaportu;
-    private String telefonKontaktowyDoAutoraRaportu;
-    private String adresEmailDoAutoraRaportu;
-    private String osobaOdpowiedzialnaPoStronieZamawiajacejRaport;
-    private String telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego;
-    private String adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego;
+    private DaneZamawiajacegoRaport;
+    private DaneWykonujacegoRaport;
 
     public void dodajDaneRaportu (String nazwaFirmy, String adresFirmy, String nazwaLinii, String autorRaportu, String telefonKontaktowyDoAutoraRaportu, String adresEmailDoAutoraRaportu, String osobaOdpowiedzialnaPoStronieZamawiajacejRaport, String telefonKontaktowyDoOsobyOsobyOdpowiedzialnejPoStronieZamawiajacego, String adresEmailDoOsobyOdpowiedzialnejPoStronieZamawiajacego){
 
@@ -49,8 +42,6 @@ public class DaneRaportu {
        } else return true;
 
     }
-
-
 
     public String getNazwaFirmy() {
         return nazwaFirmy;
