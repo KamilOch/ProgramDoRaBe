@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Podaj podstawowe dane do raportu</h1>
+
+<form action="/dodajDaneWykonujacegoRaport">
+
+    <tr><th>Podaj nazwę firmy</th></tr>
+    <input type="text" name="nazwaFirmy"/>
+    <tr><th>Podaj adres firm</th></tr>
+    <input type="text" name="adresFirmy"/>
+    <tr><th>Podaj adres email firmy</th></tr>
+    <input type="text" name="adresEmjlowyFirmy"/>
+    <tr><th>Podaj autora raportu</th></tr>
+    <input type="text" name="autorRaportu"/>
+    <tr><th>Podaj telefon do autora raportu</th></tr>
+    <input type="text" name="telefonKontaktowyDoAutoraRaportu"/>
+    <tr><th>Podaj adres email do autora raportu</th></tr>
+    <input type="email" name="adresEmailDoAutoraRaportu"/>
+    <tr><th>Podaj odobę zatwierdzającą raport</th></tr>
+    <input type="text" name="osobaZatwierdzajacaRaport"/>
+    <tr><th>Podaj osobę kontaktową w sprawie raportu</th></tr>
+    <input type="text" name="osobaKontaktowaWSprawieRaportu"/>
+    <tr><th>Podaj telefon do osoby kontaktowej</th></tr>
+    <input type="email" name="telefonKontaktowyDoOsobyWSprawieRaportu"/>
+    <tr><th>Podaj adres email do osoby kontaktowej</th></tr>
+    <input type="email" name="adresEmailDoOsobyWSprawieRaportu"/>
+
+    <p><input type="submit" value="Wprowadz dane wykonujacego raport"/></p>
+</form>
+
+<form action="/">
+    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
+</form>
+
+<h3>Obecnie podane dane:</h3>
+<tr><th>nazwa firmy:</th></tr>
+<div class="nazwaFirmy" th:text="${nazwaFirmy}"></div>
+<tr><th>adres firmy:</th></tr>
+<div class="adresFirmy" th:text="${adresFirmy}"></div>
+<tr><th>email firmowy:</th></tr>
+<div class="adresEmjlowyFirmy" th:text="${adresEmjlowyFirmy}"></div>
+<tr><th>autor raportu</th></tr>
+<div class="autorRaportu" th:text="${autorRaportu}"></div>
+<tr><th>Telefon do autora raportu</th></tr>
+<div class="telefonKontaktowyDoAutoraRaportu" th:text="${telefonKontaktowyDoAutoraRaportu}"></div>
+<tr><th>Adres email do autora raportu</th></tr>
+<div class="adresEmailDoAutoraRaportu" th:text="${adresEmailDoAutoraRaportu}"></div>
+<tr><th>odoba zatwierdzająca raport</th></tr>
+<div class="osobaZatwierdzajacaRaport" th:text="${osobaZatwierdzajacaRaport}"></div>
+<tr><th>osoba kontaktowa w sprawie raportu</th></tr>
+<div class="osobaKontaktowaWSprawieRaportu" th:text="${osobaKontaktowaWSprawieRaportu}"></div>
+<tr><th>telefon do soby kontaktowej w sprawie raportu</th></tr>
+<div class="telefonKontaktowyDoOsobyWSprawieRaportu" th:text="${telefonKontaktowyDoOsobyWSprawieRaportu}"></div>
+<tr><th>email do soby kontaktowej w sprawie raportu</th></tr>
+<div class="adresEmailDoOsobyWSprawieRaportu" th:text="${adresEmailDoOsobyWSprawieRaportu}"></div>
+
+</body>
+</html>

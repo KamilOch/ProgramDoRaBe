@@ -20,7 +20,7 @@ public class ProgramController {
 
 
     @RequestMapping("/dodajDaneDlaRaportu")
-    public String dodajDaneRaportu(
+    public String dodajDaneDlaRaportu(
             @RequestParam(value = "tytulRaportu", required = false) String tytulRaportu,
             @RequestParam(value = "numerDokumentu", required = false) String  numerDokumentu,
             @RequestParam(value = "wersjaDokumentu", required = false) String wersjaDokumentu,
@@ -32,7 +32,7 @@ public class ProgramController {
     }
 
     @RequestMapping ("/dodawanieDanychDlaRaportu")
-    public String dodawanie (
+    public String dodawanieDanychDlaRaportu (
             Model model
     ) {
         model.addAttribute("tytulRaportu", daneDlaRaportu.getTytulRaportu());
@@ -41,6 +41,42 @@ public class ProgramController {
         model.addAttribute("dataDokumentu",daneDlaRaportu.getDataDokumentu());
 
         return "daneDlaRaportu_form";
+    }
+
+    @RequestMapping("/dodajDaneWykonujacegoRaport")
+    public String dodajDaneWykonujacegoRaport(
+            @RequestParam(value = "nazwaFirmy", required = false) String nazwaFirmy,
+            @RequestParam(value = "adresFirmy", required = false) String  adresFirmy,
+            @RequestParam(value = "adresEmjlowyFirmy", required = false) String adresEmjlowyFirmy,
+            @RequestParam(value = "autorRaportu", required = false) String autorRaportu,
+            @RequestParam(value = "telefonKontaktowyDoAutoraRaportu", required = false) String telefonKontaktowyDoAutoraRaportu,
+            @RequestParam(value = "adresEmailDoAutoraRaportu", required = false) String adresEmailDoAutoraRaportu,
+            @RequestParam(value = "osobaZatwierdzajacaRaport", required = false) String osobaZatwierdzajacaRaport,
+            @RequestParam(value = "osobaKontaktowaWSprawieRaportu", required = false) String osobaKontaktowaWSprawieRaportu,
+            @RequestParam(value = "telefonKontaktowyDoOsobyWSprawieRaportu", required = false) String telefonKontaktowyDoOsobyWSprawieRaportu,
+            @RequestParam(value = "adresEmailDoOsobyWSprawieRaportu", required = false) String adresEmailDoOsobyWSprawieRaportu,
+            Model model
+    ) {
+        daneWykonujacegoRaport.dodajDaneWykonujacegoRaport(nazwaFirmy, adresFirmy, adresEmjlowyFirmy, autorRaportu,telefonKontaktowyDoAutoraRaportu,adresEmailDoAutoraRaportu, osobaZatwierdzajacaRaport, osobaKontaktowaWSprawieRaportu, telefonKontaktowyDoOsobyWSprawieRaportu, adresEmailDoOsobyWSprawieRaportu);
+        return "redirect:/dodawanieDanychWykonujacegoRaport";
+    }
+
+    @RequestMapping ("/dodawanieDanychWykonujacegoRaport")
+    public String dodawanieDanychWykonujacegoRaport (
+            Model model
+    ) {
+        model.addAttribute("nazwaFirmy", daneWykonujacegoRaport.getNazwaFirmy());
+        model.addAttribute("adresFirmy",daneWykonujacegoRaport.getAdresFirmy());
+        model.addAttribute("adresEmjlowyFirmy",daneWykonujacegoRaport.getAdresEmjlowyFirmy());
+        model.addAttribute("autorRaportu",daneWykonujacegoRaport.getAutorRaportu());
+        model.addAttribute("telefonKontaktowyDoAutoraRaportu",daneWykonujacegoRaport.getTelefonKontaktowyDoAutoraRaportu());
+        model.addAttribute("adresEmailDoAutoraRaportu",daneWykonujacegoRaport.getAdresEmailDoAutoraRaportu());
+        model.addAttribute("osobaZatwierdzajacaRaport",daneWykonujacegoRaport.getOsobaZatwierdzajacaRaport());
+        model.addAttribute("osobaKontaktowaWSprawieRaportu",daneWykonujacegoRaport.getOsobaKontaktowaWSprawieRaportu());
+        model.addAttribute("telefonKontaktowyDoOsobyWSprawieRaportu",daneWykonujacegoRaport.getTelefonKontaktowyDoOsobyWSprawieRaportu());
+        model.addAttribute("adresEmailDoOsobyWSprawieRaportu",daneWykonujacegoRaport.getAdresEmailDoOsobyWSprawieRaportu());
+
+        return "daneWykonujacegoRaport_form";
     }
 
 
