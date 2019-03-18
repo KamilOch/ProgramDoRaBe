@@ -5,7 +5,7 @@ public class Ryzyko {
     private double numerRyzyka;
     private String tytulRyzyka;
     private String lokalizacjaRyzyka;
-    private String zagrozonyElementCiala;
+    private ElementyCiala zagrozonyElementCiala;
     private String typPracyMaszyny;
     private String zadanie;
     private String podZadanie;
