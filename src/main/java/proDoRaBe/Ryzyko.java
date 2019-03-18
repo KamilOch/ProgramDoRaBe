@@ -13,7 +13,8 @@ public class Ryzyko {
     private TypRyzyka podTypRyzyka;
     private String opisRyzyka;
 
-    private int stopienMozliwychObrazen;
+
+    private StopienMozliwychObrazen stopienMozliwychObrazen;
     private int mozliwoscUnikniecia;
     private int prawdopodobienstwoWystapieniaZdarzeniaNiebezpiecznego;
     private int czestosc_czasEkspozycji;
