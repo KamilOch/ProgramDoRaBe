@@ -1,9 +1,11 @@
-package proDoRaBe;
+package proDoRaBe.ui;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import proDoRaBe.model.Raport;
+import proDoRaBe.model.*;
 
 @Controller
 public class ProgramController {

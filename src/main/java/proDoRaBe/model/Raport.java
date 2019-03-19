@@ -1,4 +1,7 @@
-package proDoRaBe;
+package proDoRaBe.model;
+
+import proDoRaBe.model.DaneRaportu;
+import proDoRaBe.model.LiniaProdukcyjna;
 
 public class Raport {
 

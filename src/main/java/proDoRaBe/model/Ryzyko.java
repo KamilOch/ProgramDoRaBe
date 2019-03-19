@@ -1,4 +1,4 @@
-package proDoRaBe;
+package proDoRaBe.model;
 
 public class Ryzyko {
 

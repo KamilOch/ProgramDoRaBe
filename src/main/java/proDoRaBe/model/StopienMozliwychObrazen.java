@@ -1,4 +1,4 @@
-package proDoRaBe;
+package proDoRaBe.model;
 
 import java.util.HashMap;
 import java.util.Map;
