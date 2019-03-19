@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class StopienMozliwychObrazen {
 
-    public HashMap <String, Double> listaMozliwychObrazen = new HashMap<>();
+    private HashMap <String, Double> listaMozliwychObrazen = new HashMap<>();
 
 
 
