@@ -6,6 +6,8 @@ import java.util.HashMap;
 
 public class ReferencjeStopienMozliwychObrazen {
 
+        HashMap <String, Double> listaMozliwychObrazen;
+
         public ReferencjeStopienMozliwychObrazen() {
                 listaMozliwychObrazen.put("Zadrapanie / Stłuczenie", 0.25);
                 listaMozliwychObrazen.put("Skaleczenie / łagodny skutek", 0.5);

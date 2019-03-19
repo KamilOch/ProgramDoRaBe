@@ -1,6 +1,10 @@
 package proDoRaBe.db;
 
+import java.util.List;
+
 public class ReferencjeElementyCiala {
+
+    List<String> elementyCiala;
 
     public ReferencjeElementyCiala() {
         elementyCiala.add("Kończyny górne");
