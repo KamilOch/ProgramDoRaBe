@@ -15,8 +15,8 @@ public class Ryzyko {
 
 
     private StopienMozliwychObrazen stopienMozliwychObrazen;
+    private PrawdopodobienstwoWystapieniaZdarzeniaNiebezpiecznego prawdopodobienstwoWystapieniaZdarzeniaNiebezpiecznego;
     private int mozliwoscUnikniecia;
-    private int prawdopodobienstwoWystapieniaZdarzeniaNiebezpiecznego;
     private int czestosc_czasEkspozycji;
 
     private String opisPropozycjiRegukcjiRyzyka;
