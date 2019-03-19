@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ElementyCiala {
 
-private List<String> elementyCiala = new ArrayList<>();
+    public List<String> elementyCiala = new ArrayList<>();
 
     public List<String> getElementyCiala() {
         elementyCiala.add("Kończyny górne");
