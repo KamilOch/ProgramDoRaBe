@@ -6,11 +6,8 @@ import java.util.Map;
 
 public class StopienMozliwychObrazen {
 
-    private HashMap <String, Double> stopienMozliwychObrazen;
-/*
-    public Map<String, Double> getListaMozliwychObrazen() {
-        HashMap<String, Double> listaMozliwychObrazenKopia = new HashMap<>(listaMozliwychObrazen);
-        return listaMozliwychObrazenKopia;
-    }
-    */
+    public HashMap <String, Double> listaMozliwychObrazen = new HashMap<>();
+
+
+
 }
