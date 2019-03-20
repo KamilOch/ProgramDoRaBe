@@ -56,14 +56,12 @@ public class ProgramController {
             @RequestParam(value = "cisnienieRoboczeWUkladzieHydrauliki", required = false) String  cisnienieRoboczeWUkladzieHydrauliki,
             Model model
     ) {
-       liniaProdukcyjna.dodajLiniaProdukcyjna(
-               nazwaLinii, producentLinii, typLinii, numerLinii, dataProdukcji, posiadaneCertyfikaty, posiadaneCertyfikaty,
+       liniaProdukcyjna.dodajLiniaProdukcyjna(nazwaLinii, producentLinii, typLinii, numerLinii, dataProdukcji, posiadaneCertyfikaty,
                opisLinii, opisSystemuSterowania, srodowiskoPracy, wymaganyPoziomSzkolenia, liniaObslugiwanaPrzez, przeznaczenieLinii,
                przewidzianyCzasUzytkowania, wymiaryMaszyny, srodowiskoPracyMaszyny, surowiecDoProdukcji, czasZatrzymaniaAwaryjnego,
                czasCykluMaszyny, liczbaOperatorow, iloscStacjiOperatorskich, konserwacjaWykonywanaPrzez, czestotliwoscKonserwacji,
                czyszczenie, naprawaZaciec, sprzatanie, napiecieWUkladzieSterowania, zasilanieGlowne, cisnienieRoboczeWUkladziePneumatyki,
-               cisnienieRoboczeWUkladzieHydrauliki
-               );
+               cisnienieRoboczeWUkladzieHydrauliki);
         return "redirect:/dodawaniePodstawoweDaneLiniiMaszyny";
     }
 
@@ -87,7 +85,7 @@ public class ProgramController {
         model.addAttribute("przeznaczenieLinii",liniaProdukcyjna.getPrzeznaczenieLinii());
 
         model.addAttribute("przewidzianyCzasUzytkowania", liniaProdukcyjna.getPrzewidzianyCzasUzytkowania());
-        model.addAttribute("czasCykluMaszyny",liniaProdukcyjna.getCzasCykluMaszynyy());
+        model.addAttribute("czasCykluMaszyny",liniaProdukcyjna.getCzasCykluMaszyny());
         model.addAttribute("srodowiskoPracyMaszyny",liniaProdukcyjna.getSrodowiskoPracyMaszyny());
         model.addAttribute("surowiecDoProdukcji",liniaProdukcyjna.getSurowiecDoProdukcji());
 
@@ -103,7 +101,7 @@ public class ProgramController {
 
         model.addAttribute("napiecieWUkladzieSterowania", liniaProdukcyjna.getNapiecieWUkladzieSterowania());
         model.addAttribute("zasilanieGlowne",liniaProdukcyjna.getZasilanieGlowne());
-        model.addAttribute("cisnienieRoboczeWUkladziePneumatyki",liniaProdukcyjna.getCisnienieRoboczeWUkladziePneumatykiu());
+        model.addAttribute("cisnienieRoboczeWUkladziePneumatyki",liniaProdukcyjna.getCisnienieRoboczeWUkladziePneumatyki());
         model.addAttribute("cisnienieRoboczeWUkladzieHydrauliki",liniaProdukcyjna.getCisnienieRoboczeWUkladzieHydrauliki());
 
         return "danePodstawoweLiniiMaszyny_form";
