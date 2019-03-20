@@ -20,6 +20,96 @@ public class ProgramController {
     Raport raport = new Raport (daneRaportu, liniaProdukcyjna);
 
 
+    @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
+    public String dodajPodstawoweDaneLiniiMaszyny(
+            @RequestParam(value = "nazwaLinii", required = false) String nazwaLinii,
+            @RequestParam(value = "producentLinii", required = false) String producentLinii,
+            @RequestParam(value = "typLinii", required = false) String typLinii,
+            @RequestParam(value = "numerLinii", required = false) String numerLinii,
+            @RequestParam(value = "dataProdukcji", required = false) String dataProdukcji,
+            @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
+            // brak listy maszyn
+            @RequestParam(value = "opisLinii", required = false) String opisLinii,
+            // brak zdjecia linii
+            @RequestParam(value = "opisSystemuSterowania", required = false) String opisSystemuSterowania,
+            // brak zdjecia sterowania
+            @RequestParam(value = "srodowiskoPracy", required = false) String srodowiskoPracy,
+            @RequestParam(value = "wymaganyPoziomSzkolenia", required = false) String wymaganyPoziomSzkolenia,
+            @RequestParam(value = "liniaObslugiwanaPrzez", required = false) String liniaObslugiwanaPrzez,
+            @RequestParam(value = "przeznaczenieLinii", required = false) String przeznaczenieLinii,
+            @RequestParam(value = "przewidzianyCzasUzytkowania", required = false) String przewidzianyCzasUzytkowania,
+            @RequestParam(value = "wymiaryMaszyny", required = false) String wymiaryMaszyny,
+            @RequestParam(value = "srodowiskoPracyMaszyny", required = false) String srodowiskoPracyMaszyny,
+            @RequestParam(value = "surowiecDoProdukcji", required = false) String surowiecDoProdukcji,
+            @RequestParam(value = "czasZatrzymaniaAwaryjnego", required = false) String czasZatrzymaniaAwaryjnego,
+            @RequestParam(value = "czasCykluMaszyny", required = false) String czasCykluMaszyny,
+            @RequestParam(value = "liczbaOperatorow", required = false) String liczbaOperatorow,
+            @RequestParam(value = "iloscStacjiOperatorskich", required = false) String iloscStacjiOperatorskich,
+            @RequestParam(value = "konserwacjaWykonywanaPrzez", required = false) String konserwacjaWykonywanaPrzez,
+            @RequestParam(value = "czestotliwoscKonserwacji", required = false) String czestotliwoscKonserwacji,
+            @RequestParam(value = "czyszczenie", required = false) String czyszczenie,
+            @RequestParam(value = "naprawaZaciec", required = false) String naprawaZaciec,
+            @RequestParam(value = "sprzatanie", required = false) String sprzatanie,
+            @RequestParam(value = "napiecieWUkladzieSterowania", required = false) String  napiecieWUkladzieSterowania,
+            @RequestParam(value = "zasilanieGlowne", required = false) String  zasilanieGlowne,
+            @RequestParam(value = "cisnienieRoboczeWUkladziePneumatyki", required = false) String  cisnienieRoboczeWUkladziePneumatyki,
+            @RequestParam(value = "cisnienieRoboczeWUkladzieHydrauliki", required = false) String  cisnienieRoboczeWUkladzieHydrauliki,
+            Model model
+    ) {
+       liniaProdukcyjna.dodajLiniaProdukcyjna(
+               nazwaLinii, producentLinii, typLinii, numerLinii, dataProdukcji, posiadaneCertyfikaty, posiadaneCertyfikaty,
+               opisLinii, opisSystemuSterowania, srodowiskoPracy, wymaganyPoziomSzkolenia, liniaObslugiwanaPrzez, przeznaczenieLinii,
+               przewidzianyCzasUzytkowania, wymiaryMaszyny, srodowiskoPracyMaszyny, surowiecDoProdukcji, czasZatrzymaniaAwaryjnego,
+               czasCykluMaszyny, liczbaOperatorow, iloscStacjiOperatorskich, konserwacjaWykonywanaPrzez, czestotliwoscKonserwacji,
+               czyszczenie, naprawaZaciec, sprzatanie, napiecieWUkladzieSterowania, zasilanieGlowne, cisnienieRoboczeWUkladziePneumatyki,
+               cisnienieRoboczeWUkladzieHydrauliki
+               );
+        return "redirect:/dodawaniePodstawoweDaneLiniiMaszyny";
+    }
+
+    @RequestMapping ("/dodawaniePodstawoweDaneLiniiMaszyny")
+    public String dodawaniePodstawoweDaneLiniiMaszyny (
+            Model model
+    ) {
+        model.addAttribute("nazwaLinii", liniaProdukcyjna.getNazwaLinii());
+        model.addAttribute("producentLinii",liniaProdukcyjna.getProducentLinii());
+        model.addAttribute("typLinii",liniaProdukcyjna.getTypLinii());
+        model.addAttribute("numerLinii",liniaProdukcyjna.getNumerLinii());
+
+        model.addAttribute("dataProdukcji", liniaProdukcyjna.getDataProdukcji());
+        model.addAttribute("posiadaneCertyfikaty",liniaProdukcyjna.getPosiadaneCertyfikaty());
+        model.addAttribute("opisLinii",liniaProdukcyjna.getOpisLinii());
+        model.addAttribute("opisSystemuSterowania",liniaProdukcyjna.getOpisSystemuSterowania());
+
+        model.addAttribute("srodowiskoPracy", liniaProdukcyjna.getSrodowiskoPracy());
+        model.addAttribute("wymaganyPoziomSzkolenia",liniaProdukcyjna.getWymaganyPoziomSzkolenia());
+        model.addAttribute("liniaObslugiwanaPrzez",liniaProdukcyjna.getLiniaObslugiwanaPrzez());
+        model.addAttribute("przeznaczenieLinii",liniaProdukcyjna.getPrzeznaczenieLinii());
+
+        model.addAttribute("przewidzianyCzasUzytkowania", liniaProdukcyjna.getPrzewidzianyCzasUzytkowania());
+        model.addAttribute("czasCykluMaszyny",liniaProdukcyjna.getCzasCykluMaszynyy());
+        model.addAttribute("srodowiskoPracyMaszyny",liniaProdukcyjna.getSrodowiskoPracyMaszyny());
+        model.addAttribute("surowiecDoProdukcji",liniaProdukcyjna.getSurowiecDoProdukcji());
+
+        model.addAttribute("czasZatrzymaniaAwaryjnego", liniaProdukcyjna.getCzasZatrzymaniaAwaryjnego());
+        model.addAttribute("liczbaOperatorow",liniaProdukcyjna.getLiczbaOperatorow());
+        model.addAttribute("iloscStacjiOperatorskich",liniaProdukcyjna.getIloscStacjiOperatorskich());
+        model.addAttribute("konserwacjaWykonywanaPrzez",liniaProdukcyjna.getKonserwacjaWykonywanaPrzez());
+
+        model.addAttribute("czestotliwoscKonserwacji", liniaProdukcyjna.getCzestotliwoscKonserwacji());
+        model.addAttribute("czyszczenie",liniaProdukcyjna.getCzyszczenie());
+        model.addAttribute("naprawaZaciec",liniaProdukcyjna.getNaprawaZaciec());
+        model.addAttribute("sprzatanie",liniaProdukcyjna.getSprzatanie());
+
+        model.addAttribute("napiecieWUkladzieSterowania", liniaProdukcyjna.getNapiecieWUkladzieSterowania());
+        model.addAttribute("zasilanieGlowne",liniaProdukcyjna.getZasilanieGlowne());
+        model.addAttribute("cisnienieRoboczeWUkladziePneumatyki",liniaProdukcyjna.getCisnienieRoboczeWUkladziePneumatykiu());
+        model.addAttribute("cisnienieRoboczeWUkladzieHydrauliki",liniaProdukcyjna.getCisnienieRoboczeWUkladzieHydrauliki());
+
+        return "danePodstawoweLiniiMaszyny_form";
+    }
+
+    // stary kod
     @RequestMapping("/dodajDaneDlaRaportu")
     public String dodajDaneDlaRaportu(
             @RequestParam(value = "tytulRaportu", required = false) String tytulRaportu,
