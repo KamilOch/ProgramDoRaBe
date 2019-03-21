@@ -20,6 +20,7 @@ public class Ryzyko {
     //private PrawdopodobienstwoWystapieniaZdarzeniaNiebezpiecznego prawdopodobienstwoWystapieniaZdarzeniaNiebezpiecznego;
     //private PrawdopodobienstwoUniknieciaZagrozenia prawdopodobienstwoUniknieciaZagrozenia;
     //private CzestotliwoscCzasEkspozycji czestotliwoscCzasEkspozycji;
+
 // moze lepiej listy a nie klasy
     private HashMap <String, Double> listaMozliwychObrazen = new HashMap<>();
     private HashMap <String, Double> listaPrawdopodobienstwoWystapieniaZdarzeniaNiebezpiecznego = new HashMap<>();

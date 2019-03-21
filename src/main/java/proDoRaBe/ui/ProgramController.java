@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import proDoRaBe.model.Raport;
 import proDoRaBe.model.*;
 
+import java.util.ArrayList;
+
 @Controller
 public class ProgramController {
+
+    private ListaMaszyn maszyny = new ListaMaszyn();
 
     DaneZamawiajacegoRaport daneZamawiajacegoRaport = new DaneZamawiajacegoRaport();
     DaneWykonujacegoRaport daneWykonujacegoRaport = new DaneWykonujacegoRaport();
@@ -19,6 +23,12 @@ public class ProgramController {
 
     Raport raport = new Raport (daneRaportu, liniaProdukcyjna);
 
+
+
+    void tworzenieMaszynyWMapie (String nazwa){
+        String zmienna = nazwa;
+        maszyny.dodajMaszyne(zmienna, new Maszyna());
+    }
 
     @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
     public String dodajPodstawoweDaneLiniiMaszyny(
