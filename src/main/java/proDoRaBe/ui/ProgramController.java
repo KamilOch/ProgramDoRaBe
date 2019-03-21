@@ -25,9 +25,9 @@ public class ProgramController {
 
 
 
-    void tworzenieMaszynyWMapie (String nazwa){
+    void tworzenieMaszynyWMapie (String nazwa, String nazwaMaszyny, String producentMaszyny, String typMaszyny, String numerMaszyny, String dataProdukcji, String posiadaneCertyfikaty){
         String zmienna = nazwa;
-        maszyny.dodajMaszyne(zmienna, new Maszyna());
+        maszyny.dodajMaszyne(zmienna, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny, dataProdukcji,posiadaneCertyfikaty));
     }
 
     @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
