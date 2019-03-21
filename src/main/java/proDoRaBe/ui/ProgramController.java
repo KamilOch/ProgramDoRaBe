@@ -30,6 +30,39 @@ public class ProgramController {
         maszyny.dodajMaszyne(zmienna, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny, dataProdukcji,posiadaneCertyfikaty));
     }
 
+
+    @RequestMapping("/dodajMaszyne")
+    public String dodajMaszyne(
+            @RequestParam(value = "nazwaMaszyny", required = false) String nazwaMaszyny,
+            @RequestParam(value = "producentMaszyny", required = false) String  producentMaszyny,
+            @RequestParam(value = "typMaszyny", required = false) String typMaszyny,
+            @RequestParam(value = "numerMaszyny", required = false) String numerMaszyny,
+            @RequestParam(value = "dataProdukcji", required = false) String dataProdukcji,
+            @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
+            Model model
+    ) {
+        maszyny.dodajMaszyne(nazwaMaszyny, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty));
+        return "redirect:/dodawanieMaszyny";
+    }
+
+    @RequestMapping ("/dodawanieMaszyny")
+    public String dodawanieMaszyny (
+            Model model
+    ) {
+        // tu trzeba poprawic !!!! zaczac od poprawienia geterow!!!!!
+        model.addAttribute("nazwaMaszyny", daneDlaRaportu.getTytulRaportu());
+        model.addAttribute("producentMaszyny",daneDlaRaportu.getNumerDokumentu());
+        model.addAttribute("typMaszyny",daneDlaRaportu.getWersjaDokumentu());
+        model.addAttribute("numerMaszyny",daneDlaRaportu.getDataDokumentu());
+        model.addAttribute("dataProdukcji",daneDlaRaportu.getDataDokumentu());
+        model.addAttribute("posiadaneCertyfikaty",daneDlaRaportu.getDataDokumentu());
+
+        return "daneMaszyny_form";
+    }
+
+
+
+
     @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
     public String dodajPodstawoweDaneLiniiMaszyny(
             @RequestParam(value = "nazwaLinii", required = false) String nazwaLinii,
@@ -117,7 +150,7 @@ public class ProgramController {
         return "danePodstawoweLiniiMaszyny_form";
     }
 
-    // stary kod
+
     @RequestMapping("/dodajDaneDlaRaportu")
     public String dodajDaneDlaRaportu(
             @RequestParam(value = "tytulRaportu", required = false) String tytulRaportu,
