@@ -17,6 +17,30 @@ public class Maszyna {
         this.dataProdukcji = dataProdukcji;
         this.posiadaneCertyfikaty = posiadaneCertyfikaty;
     }
+
+    public String getNazwaMaszyny() {
+        return nazwaMaszyny;
+    }
+
+    public String getProducentMaszyny() {
+        return producentMaszyny;
+    }
+
+    public String getTypMaszyny() {
+        return typMaszyny;
+    }
+
+    public String getNumerMaszyny() {
+        return numerMaszyny;
+    }
+
+    public String getDataProdukcji() {
+        return dataProdukcji;
+    }
+
+    public String getPosiadaneCertyfikaty() {
+        return posiadaneCertyfikaty;
+    }
 //  zastanawiam sie jak to ustawic czy maszyna ma ryzyka czy linia czytez sa ryzyka z roznymi maszynami (3opcje widze)
 //    private Ryzyko ryzyko;
 

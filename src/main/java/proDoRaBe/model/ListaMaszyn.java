@@ -21,7 +21,7 @@ public class ListaMaszyn {
             return wiadomosc;
         }   else {
             maszyny.put(nazwaMaszyny, maszyna);
-            wiadomosc =  "Dodano nowego gracza";
+            wiadomosc =  "Dodano nową maszynę";
             System.out.println(wiadomosc);
             return wiadomosc;
         }

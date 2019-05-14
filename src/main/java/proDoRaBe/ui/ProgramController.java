@@ -50,7 +50,7 @@ public class ProgramController {
             Model model
     ) {
         // tu trzeba poprawic !!!! zaczac od poprawienia geterow!!!!!
-        model.addAttribute("nazwaMaszyny", daneDlaRaportu.getTytulRaportu());
+        model.addAttribute("nazwaMaszyny", maszyny.podajMaszyny(nazwaMaszyny).getNazwaMaszyny());
         model.addAttribute("producentMaszyny",daneDlaRaportu.getNumerDokumentu());
         model.addAttribute("typMaszyny",daneDlaRaportu.getWersjaDokumentu());
         model.addAttribute("numerMaszyny",daneDlaRaportu.getDataDokumentu());
