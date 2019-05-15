@@ -18,6 +18,9 @@ public class Maszyna {
         this.posiadaneCertyfikaty = posiadaneCertyfikaty;
     }
 
+    public Maszyna() {
+    }
+
     public String getNazwaMaszyny() {
         return nazwaMaszyny;
     }

@@ -41,7 +41,8 @@ public class ProgramController {
             @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
             Model model
     ) {
-        maszyny.dodajMaszyne(nazwaMaszyny, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty));
+        // linia kodu 45 nie dziala, trzeba zmienic
+        //maszyny.dodajMaszyne(nazwaMaszyny, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty));
         return "redirect:/dodawanieMaszyny";
     }
 
@@ -49,13 +50,15 @@ public class ProgramController {
     public String dodawanieMaszyny (
             Model model
     ) {
+        // tymcxasowo tutaj, moze zostanie do przemyslenia
+        Maszyna maszyna = new Maszyna();
         // tu trzeba poprawic !!!! zaczac od poprawienia geterow!!!!!
-        model.addAttribute("nazwaMaszyny", maszyny.podajMaszyny(nazwaMaszyny).getNazwaMaszyny());
-        model.addAttribute("producentMaszyny",daneDlaRaportu.getNumerDokumentu());
-        model.addAttribute("typMaszyny",daneDlaRaportu.getWersjaDokumentu());
-        model.addAttribute("numerMaszyny",daneDlaRaportu.getDataDokumentu());
-        model.addAttribute("dataProdukcji",daneDlaRaportu.getDataDokumentu());
-        model.addAttribute("posiadaneCertyfikaty",daneDlaRaportu.getDataDokumentu());
+        model.addAttribute("nazwaMaszyny", maszyna.getNazwaMaszyny());
+        model.addAttribute("producentMaszyny",maszyna.getProducentMaszyny());
+        model.addAttribute("typMaszyny",maszyna.getTypMaszyny());
+        model.addAttribute("numerMaszyny",maszyna.getNumerMaszyny());
+        model.addAttribute("dataProdukcji",maszyna.getDataProdukcji());
+        model.addAttribute("posiadaneCertyfikaty",maszyna.getPosiadaneCertyfikaty());
 
         return "daneMaszyny_form";
     }
