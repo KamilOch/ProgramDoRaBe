@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class LiniaProdukcyjna {
 
+    //podstawowe dane linii
     private String nazwaLinii;
     private String producentLinii;
     private String typLinii;
@@ -18,6 +19,7 @@ public class LiniaProdukcyjna {
     // tego tez nie ma w htmlu
     private Zdjecie zdjecieLinii;
 
+    //System sterowania
     private String opisSystemuSterowania;
     // tego tez nie ma w htmlu
     private Zdjecie systemuSterowania;

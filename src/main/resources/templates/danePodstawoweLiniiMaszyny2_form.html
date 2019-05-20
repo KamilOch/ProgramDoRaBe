@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Podaj podstawowe dane dla linii</h1>
+
+<form action="/dodajPodstawoweDaneLiniiMaszyny">
+
+    <tr><th>Podaj nazwę linii</th></tr>
+    <input type="text" name="nazwaLinii"/>
+    <tr><th>Podaj producenta linii</th></tr>
+    <input type="text" name="producentLinii"/>
+    <tr><th>Podaj typ linii</th></tr>
+    <input type="text" name="typLinii"/>
+    <tr><th>Podaj numer linii</th></tr>
+    <input type="text" name="numerLinii"/>
+    <tr><th>Podaj datę produkcji</th></tr>
+    <input type="text" name="dataProdukcji"/>
+    <tr><th>Podaj posiadane certyfikaty</th></tr>
+    <input type="text" name="posiadaneCertyfikaty"/>
+
+    <tr><th>Podaj opis linii</th></tr>
+    <input type="text" name="opisLinii"/>
+
+    <tr><th>Podaj opis systemu sterowania</th></tr>
+    <input type="text" name="opisSystemuSterowania"/>
+
+    <tr><th>Podaj środowisko pracy</th></tr>
+    <input type="text" name="srodowiskoPracy"/>
+    <tr><th>Podaj wymagany poziom szkolenia</th></tr>
+    <input type="text" name="wymaganyPoziomSzkolenia"/>
+    <tr><th>Kto obsługuje linie</th></tr>
+    <input type="text" name="liniaObslugiwanaPrzez"/>
+    <tr><th>Przeznaczenie linii</th></tr>
+    <input type="text" name="przeznaczenieLinii"/>
+    <tr><th>Przewidziany czas uzytkowania</th></tr>
+    <input type="text" name="przewidzianyCzasUzytkowania"/>
+    <tr><th>Podaj wymiary</th></tr>
+    <input type="text" name="wymiaryMaszyny"/>
+    <tr><th>Podaj środowisko pracy</th></tr>
+    <input type="text" name="srodowiskoPracyMaszyny"/>
+    <tr><th>Podaj obrabiany surowiec</th></tr>
+    <input type="text" name="surowiecDoProdukcji"/>
+    <tr><th>Podaj czas zatrzymania awaryjnego</th></tr>
+    <input type="text" name="czasZatrzymaniaAwaryjnego"/>
+    <tr><th>Podaj czas cyklu maszyny</th></tr>
+    <input type="text" name="czasCykluMaszyny"/>
+    <tr><th>Podaj liczbę operatorów</th></tr>
+    <input type="text" name="liczbaOperatorow"/>
+    <tr><th>Podaj liczbę stacji sterowania</th></tr>
+    <input type="text" name="iloscStacjiOperatorskich"/>
+    <tr><th>Podaj kto wykonuje prace konserwujące</th></tr>
+    <input type="text" name="konserwacjaWykonywanaPrzez"/>
+    <tr><th>Jak często wykonywane są prace konserwujące</th></tr>
+    <input type="text" name="czestotliwoscKonserwacji"/>
+    <tr><th>Podaj kto wykonuje czyszczenie</th></tr>
+    <input type="text" name="czyszczenie"/>
+    <tr><th>Podaj kto usuwa zacięcia</th></tr>
+    <input type="text" name="naprawaZaciec"/>
+    <tr><th>Podaj kto sprząta maszynę</th></tr>
+    <input type="text" name="sprzatanie"/>
+    <tr><th>Podaj zasilanie układu sterowania</th></tr>
+    <input type="text" name="napiecieWUkladzieSterowania"/>
+    <tr><th>Podaj sposób zasilania maszyny</th></tr>
+    <input type="text" name="zasilanieGlowne"/>
+    <tr><th>Podaj ciśnienie robocze w ukłądzie pneumatyki</th></tr>
+    <input type="text" name="cisnienieRoboczeWUkladziePneumatyki"/>
+    <tr><th>Podaj ciśnienie robocze w ukłądzie hydrauliki</th></tr>
+    <input type="text" name="cisnienieRoboczeWUkladzieHydrauliki"/>
+
+
+    <p><input type="submit" value="Wprowadz podstawowe dane o linii"/></p>
+</form>
+
+<form action="/">
+    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
+</form>
+
+<h3>Obecnie podane dane to:</h3>
+
+<tr><th>Nazwę linii</th></tr>
+<div class="nazwaLinii" th:text="${nazwaLinii}"></div>
+<tr><th>Producenta linii</th></tr>
+<div class="producentLinii" th:text="${producentLinii}"></div>
+<tr><th>Typ linii</th></tr>
+<div class="typLinii" th:text="${typLinii}"></div>
+<tr><th>Numer linii</th></tr>
+<div class="numerLinii" th:text="${numerLinii}"></div>
+<tr><th>Data produkcji</th></tr>
+<div class="dataProdukcji" th:text="${dataProdukcji}"></div>
+<tr><th>Posiadane certyfikaty</th></tr>
+<div class="posiadaneCertyfikaty" th:text="${posiadaneCertyfikaty}"></div>
+
+<tr><th>Opis linii</th></tr>
+<div class="opisLinii" th:text="${opisLinii}"></div>
+
+<tr><th>Opis systemu sterowania</th></tr>
+<div class="opisSystemuSterowania" th:text="${opisSystemuSterowania}"></div>
+
+<tr><th>Srodowisko pracy</th></tr>
+<div class="srodowiskoPracy" th:text="${srodowiskoPracy}"></div>
+<tr><th>Poziom wymaganego szkolenia</th></tr>
+<div class="wymaganyPoziomSzkolenia" th:text="${wymaganyPoziomSzkolenia}"></div>
+<tr><th>Kto obsługuje linie</th></tr>
+<div class="liniaObslugiwanaPrzez" th:text="${liniaObslugiwanaPrzez}"></div>
+<tr><th>Przeznaczenie linii</th></tr>
+<div class="przeznaczenieLinii" th:text="${przeznaczenieLinii}"></div>
+<tr><th>Przewidziany czas uzytkowania</th></tr>
+<div class="przewidzianyCzasUzytkowania" th:text="${przewidzianyCzasUzytkowania}"></div>
+<tr><th>Wymiary</th></tr>
+<div class="wymiaryMaszyny" th:text="${wymiaryMaszyny}"></div>
+<tr><th>Srodowisko pracy</th></tr>
+<div class="srodowiskoPracyMaszyny" th:text="${srodowiskoPracyMaszyny}"></div>
+<tr><th>Obrabiany surowiec</th></tr>
+<div class="surowiecDoProdukcji" th:text="${surowiecDoProdukcji}"></div>
+<tr><th>Czas zatrzymania awaryjnego</th></tr>
+<div class="czasZatrzymaniaAwaryjnego" th:text="${czasZatrzymaniaAwaryjnego}"></div>
+<tr><th>Czas cyklu maszyny</th></tr>
+<div class="czasCykluMaszyny" th:text="${czasCykluMaszyny}"></div>
+<tr><th>Podana liczba operatorów</th></tr>
+<div class="liczbaOperatorow" th:text="${liczbaOperatorow}"></div>
+<tr><th>Podana liczba stacji sterowania</th></tr>
+<div class="iloscStacjiOperatorskich" th:text="${iloscStacjiOperatorskich}"></div>
+<tr><th>Prace konserwacyjne wykonuje</th></tr>
+<div class="konserwacjaWykonywanaPrzez" th:text="${konserwacjaWykonywanaPrzez}"></div>
+<tr><th>Częstotliwość wykonywania prac konserwujacych</th></tr>
+<div class="czestotliwoscKonserwacji" th:text="${czestotliwoscKonserwacji}"></div>
+<tr><th>PCzyszczenie wykonuje</th></tr>
+<div class="czyszczenie" th:text="${czyszczenie}"></div>
+<tr><th>Zacięcia usuwa</th></tr>
+<div class="naprawaZaciec" th:text="${naprawaZaciec}"></div>
+<tr><th>Maszynę sprząta</th></tr>
+<div class="sprzatanie" th:text="${sprzatanie}"></div>
+<tr><th>Zasilanie układu sterowania</th></tr>
+<div class="napiecieWUkladzieSterowania" th:text="${napiecieWUkladzieSterowania}"></div>
+<tr><th>Sposób zasilania maszyny</th></tr>
+<div class="zasilanieGlowne" th:text="${zasilanieGlowne}"></div>
+<tr><th>Ciśnienie robocze w ukłądzie pneumatyki</th></tr>
+<div class="cisnienieRoboczeWUkladziePneumatyki" th:text="${cisnienieRoboczeWUkladziePneumatyki}"></div>
+<tr><th>Ciśnienie robocze w ukłądzie hydrauliki</th></tr>
+<div class="cisnienieRoboczeWUkladzieHydrauliki" th:text="${cisnienieRoboczeWUkladzieHydrauliki}"></div>
+
+</body>
+</html>
