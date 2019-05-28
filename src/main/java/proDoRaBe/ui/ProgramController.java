@@ -17,11 +17,13 @@ public class ProgramController {
     DaneZamawiajacegoRaport daneZamawiajacegoRaport = new DaneZamawiajacegoRaport();
     DaneWykonujacegoRaport daneWykonujacegoRaport = new DaneWykonujacegoRaport();
     DaneDlaRaportu daneDlaRaportu = new DaneDlaRaportu();
-
     DaneRaportu daneRaportu = new DaneRaportu();
 
+    // nowe podklasy linii produkcyjnej!!
     LPPodstawoweDaneLinii lpPodstawoweDaneLinii = new LPPodstawoweDaneLinii();
     LPOpisLinii lPOpisLinii = new LPOpisLinii();
+    LPOgraniczeniaMaszyny lPOgraniczeniaMaszyny = new LPOgraniczeniaMaszyny();
+
 
     LiniaProdukcyjna liniaProdukcyjna = new LiniaProdukcyjna();
 
@@ -93,7 +95,6 @@ public class ProgramController {
 
         return "daneLPPDL_form";
     }
-//NOWE
 
     @RequestMapping("/dodajLPOpisLinii")
     public String dodajLPOpisLinii(
@@ -126,6 +127,36 @@ public class ProgramController {
         return "daneLPOL_form";
     }
 
+    //NOWE
+    @RequestMapping("/dodajLPOgraniczeniaMaszyny")
+    public String dodajLPOgraniczeniaMaszyny(
+            @RequestParam(value = "srodowiskoPracy", required = false) String srodowiskoPracy,
+            @RequestParam(value = "wymaganyPoziomSzkolenia", required = false) String wymaganyPoziomSzkolenia,
+            @RequestParam(value = "liniaObslugiwanaPrzez", required = false) String liniaObslugiwanaPrzez,
+            @RequestParam(value = "przeznaczenieLinii", required = false) String przeznaczenieLinii,
+            @RequestParam(value = "przewidzianyCzasUzytkowania", required = false) String przewidzianyCzasUzytkowania,
+            @RequestParam(value = "wymiaryMaszyny", required = false) String wymiaryMaszyny,
+            @RequestParam(value = "srodowiskoPracyMaszyny", required = false) String srodowiskoPracyMaszyny,
+            Model model
+    ) {
+        lPOgraniczeniaMaszyny.dodajLPOgraniczeniaMaszyny(srodowiskoPracy, wymaganyPoziomSzkolenia, liniaObslugiwanaPrzez, przeznaczenieLinii,
+                przewidzianyCzasUzytkowania, wymiaryMaszyny, srodowiskoPracyMaszyny);
+        return "redirect:/dodawanieLPOgraniczeniaMaszyny";
+    }
+    @RequestMapping ("/dodawanieLPOgraniczeniaMaszyny")
+    public String dodawanieLPOgraniczeniaMaszyny (
+            Model model
+    ) {
+        model.addAttribute("srodowiskoPracy", lPOgraniczeniaMaszyny.getSrodowiskoPracy());
+        model.addAttribute("wymaganyPoziomSzkolenia",lPOgraniczeniaMaszyny.getWymaganyPoziomSzkolenia());
+        model.addAttribute("liniaObslugiwanaPrzez",lPOgraniczeniaMaszyny.getLiniaObslugiwanaPrzez());
+        model.addAttribute("przeznaczenieLinii",lPOgraniczeniaMaszyny.getPrzeznaczenieLinii());
+        model.addAttribute("przewidzianyCzasUzytkowania", lPOgraniczeniaMaszyny.getPrzewidzianyCzasUzytkowania());
+        model.addAttribute("czasCykluMaszyny",lPOgraniczeniaMaszyny.getWymiaryMaszyny());
+        model.addAttribute("srodowiskoPracyMaszyny",lPOgraniczeniaMaszyny.getSrodowiskoPracyMaszyny());
+
+        return "daneLPOM_form";
+    }
     //NOWE
 
     @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
