@@ -19,7 +19,9 @@ public class ProgramController {
     DaneDlaRaportu daneDlaRaportu = new DaneDlaRaportu();
 
     DaneRaportu daneRaportu = new DaneRaportu();
+
     LPPodstawoweDaneLinii lpPodstawoweDaneLinii = new LPPodstawoweDaneLinii();
+    LPOpisLinii lPOpisLinii = new LPOpisLinii();
 
     LiniaProdukcyjna liniaProdukcyjna = new LiniaProdukcyjna();
 
@@ -64,7 +66,6 @@ public class ProgramController {
 
         return "daneMaszyny_form";
     }
-    //NOWE
     @RequestMapping("/dodajLPPDL")
     public String dodajLPPDL(
             @RequestParam(value = "nazwaLinii", required = false) String nazwaLinii,
@@ -94,7 +95,38 @@ public class ProgramController {
     }
 //NOWE
 
+    @RequestMapping("/dodajLPOpisLinii")
+    public String dodajLPOpisLinii(
 
+            @RequestParam(value = "opisLinii", required = false) String opisLinii,
+            // brak zdjecia linii
+            @RequestParam(value = "opisSystemuSterowania", required = false) String opisSystemuSterowania,
+            // brak zdjecia sterowania
+            @RequestParam(value = "napiecieWUkladzieSterowania", required = false) String  napiecieWUkladzieSterowania,
+            @RequestParam(value = "zasilanieGlowne", required = false) String  zasilanieGlowne,
+            @RequestParam(value = "cisnienieRoboczeWUkladziePneumatyki", required = false) String  cisnienieRoboczeWUkladziePneumatyki,
+            @RequestParam(value = "cisnienieRoboczeWUkladzieHydrauliki", required = false) String  cisnienieRoboczeWUkladzieHydrauliki,
+            Model model
+    ) {
+        lPOpisLinii.dodajLPOpisLinii(opisLinii,opisSystemuSterowania,napiecieWUkladzieSterowania, zasilanieGlowne, cisnienieRoboczeWUkladziePneumatyki,
+                cisnienieRoboczeWUkladzieHydrauliki);
+        return "redirect:/dodawanieLPOpisLinii";
+    }
+    @RequestMapping ("/dodawanieLPOpisLinii")
+    public String dodawanieLPOpisLinii (
+            Model model
+    ) {
+        model.addAttribute("opisLinii",lPOpisLinii.getOpisLinii());
+        model.addAttribute("opisSystemuSterowania",lPOpisLinii.getOpisSystemuSterowania());
+        model.addAttribute("napiecieWUkladzieSterowania", lPOpisLinii.getNapiecieWUkladzieSterowania());
+        model.addAttribute("zasilanieGlowne",lPOpisLinii.getZasilanieGlowne());
+        model.addAttribute("cisnienieRoboczeWUkladziePneumatyki",lPOpisLinii.getCisnienieRoboczeWUkladziePneumatyki());
+        model.addAttribute("cisnienieRoboczeWUkladzieHydrauliki",lPOpisLinii.getCisnienieRoboczeWUkladzieHydrauliki());
+
+        return "daneLPOL_form";
+    }
+
+    //NOWE
 
     @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
     public String dodajPodstawoweDaneLiniiMaszyny(

@@ -6,6 +6,8 @@ public class LiniaProdukcyjna {
 
     //pozniej dodac/zmienic w konstruktorze !!!
     private LPPodstawoweDaneLinii lPPodstawoweDaneLinii;
+    private LPOpisLinii lPOpisLinii;
+
     //podstawowe dane linii
     private String nazwaLinii;
     private String producentLinii;

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Podaj podstawowe dane dla linii</h1>
+
+<form action="/dodajLPOpisLinii">
+
+    <tr><th>Podaj opis linii</th></tr>
+    <input type="text" name="opisLinii"/>
+    <tr><th>Podaj opis systemu sterowania</th></tr>
+    <input type="text" name="opisSystemuSterowania"/>
+    <tr><th>Podaj zasilanie układu sterowania</th></tr>
+    <input type="text" name="napiecieWUkladzieSterowania"/>
+    <tr><th>Podaj sposób zasilania maszyny</th></tr>
+    <input type="text" name="zasilanieGlowne"/>
+    <tr><th>Podaj ciśnienie robocze w ukłądzie pneumatyki</th></tr>
+    <input type="text" name="cisnienieRoboczeWUkladziePneumatyki"/>
+    <tr><th>Podaj ciśnienie robocze w ukłądzie hydrauliki</th></tr>
+    <input type="text" name="cisnienieRoboczeWUkladzieHydrauliki"/>
+
+
+    <p><input type="submit" value="Wprowadz podstawowe dane o linii"/></p>
+</form>
+
+<form action="/">
+    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
+</form>
+
+<h3>Obecnie podane dane to:</h3>
+
+<tr><th>Opis linii</th></tr>
+<div class="opisLinii" th:text="${opisLinii}"></div>
+<tr><th>Opis systemu sterowania</th></tr>
+<div class="opisSystemuSterowania" th:text="${opisSystemuSterowania}"></div>
+<tr><th>Zasilanie układu sterowania</th></tr>
+<div class="napiecieWUkladzieSterowania" th:text="${napiecieWUkladzieSterowania}"></div>
+<tr><th>Sposób zasilania maszyny</th></tr>
+<div class="zasilanieGlowne" th:text="${zasilanieGlowne}"></div>
+<tr><th>Ciśnienie robocze w ukłądzie pneumatyki</th></tr>
+<div class="cisnienieRoboczeWUkladziePneumatyki" th:text="${cisnienieRoboczeWUkladziePneumatyki}"></div>
+<tr><th>Ciśnienie robocze w ukłądzie hydrauliki</th></tr>
+<div class="cisnienieRoboczeWUkladzieHydrauliki" th:text="${cisnienieRoboczeWUkladzieHydrauliki}"></div>
+
+</body>
+</html>
