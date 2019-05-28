@@ -83,12 +83,12 @@ public class ProgramController {
     public String dodawanieLPPDL (
             Model model
     ) {
-        model.addAttribute("nazwaLinii", liniaProdukcyjna.getNazwaLinii());
-        model.addAttribute("producentLinii",liniaProdukcyjna.getProducentLinii());
-        model.addAttribute("typLinii",liniaProdukcyjna.getTypLinii());
-        model.addAttribute("numerLinii",liniaProdukcyjna.getNumerLinii());
-        model.addAttribute("dataProdukcji", liniaProdukcyjna.getDataProdukcji());
-        model.addAttribute("posiadaneCertyfikaty",liniaProdukcyjna.getPosiadaneCertyfikaty());
+        model.addAttribute("nazwaLinii", lpPodstawoweDaneLinii.getNazwaLinii());
+        model.addAttribute("producentLinii",lpPodstawoweDaneLinii.getProducentLinii());
+        model.addAttribute("typLinii",lpPodstawoweDaneLinii.getTypLinii());
+        model.addAttribute("numerLinii",lpPodstawoweDaneLinii.getNumerLinii());
+        model.addAttribute("dataProdukcji", lpPodstawoweDaneLinii.getDataProdukcji());
+        model.addAttribute("posiadaneCertyfikaty",lpPodstawoweDaneLinii.getPosiadaneCertyfikaty());
 
         return "daneLPPDL_form";
     }
