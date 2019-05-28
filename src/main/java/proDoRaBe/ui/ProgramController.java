@@ -19,6 +19,8 @@ public class ProgramController {
     DaneDlaRaportu daneDlaRaportu = new DaneDlaRaportu();
 
     DaneRaportu daneRaportu = new DaneRaportu();
+    LPPodstawoweDaneLinii lpPodstawoweDaneLinii = new LPPodstawoweDaneLinii();
+
     LiniaProdukcyjna liniaProdukcyjna = new LiniaProdukcyjna();
 
     Raport raport = new Raport (daneRaportu, liniaProdukcyjna);
@@ -62,7 +64,35 @@ public class ProgramController {
 
         return "daneMaszyny_form";
     }
+    //NOWE
+    @RequestMapping("/dodajLPPDL")
+    public String dodajLPPDL(
+            @RequestParam(value = "nazwaLinii", required = false) String nazwaLinii,
+            @RequestParam(value = "producentLinii", required = false) String producentLinii,
+            @RequestParam(value = "typLinii", required = false) String typLinii,
+            @RequestParam(value = "numerLinii", required = false) String numerLinii,
+            @RequestParam(value = "dataProdukcji", required = false) String dataProdukcji,
+            @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
+            // brak listy maszyn
+            Model model
+    ) {
+        lpPodstawoweDaneLinii.dodajLPPodstawoweDaneLinii(nazwaLinii, producentLinii, typLinii, numerLinii, dataProdukcji, posiadaneCertyfikaty);
+        return "redirect:/dodawanieLPPDL";
+    }
+    @RequestMapping ("/dodawanieLPPDL")
+    public String dodawanieLPPDL (
+            Model model
+    ) {
+        model.addAttribute("nazwaLinii", liniaProdukcyjna.getNazwaLinii());
+        model.addAttribute("producentLinii",liniaProdukcyjna.getProducentLinii());
+        model.addAttribute("typLinii",liniaProdukcyjna.getTypLinii());
+        model.addAttribute("numerLinii",liniaProdukcyjna.getNumerLinii());
+        model.addAttribute("dataProdukcji", liniaProdukcyjna.getDataProdukcji());
+        model.addAttribute("posiadaneCertyfikaty",liniaProdukcyjna.getPosiadaneCertyfikaty());
 
+        return "daneLPPDL_form";
+    }
+//NOWE
 
 
 
@@ -152,6 +182,15 @@ public class ProgramController {
 
         return "danePodstawoweLiniiMaszyny_form";
     }
+
+
+
+
+
+
+
+
+
 
 
     @RequestMapping("/dodajDaneDlaRaportu")

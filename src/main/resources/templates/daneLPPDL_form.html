@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Podaj podstawowe dane dla linii</h1>
+
+<form action="/dodajLPPDL">
+
+    <tr><th>Podaj nazwę linii</th></tr>
+    <input type="text" name="nazwaLinii"/>
+    <tr><th>Podaj producenta linii</th></tr>
+    <input type="text" name="producentLinii"/>
+    <tr><th>Podaj typ linii</th></tr>
+    <input type="text" name="typLinii"/>
+    <tr><th>Podaj numer linii</th></tr>
+    <input type="text" name="numerLinii"/>
+    <tr><th>Podaj datę produkcji</th></tr>
+    <input type="text" name="dataProdukcji"/>
+    <tr><th>Podaj posiadane certyfikaty</th></tr>
+    <input type="text" name="posiadaneCertyfikaty"/>
+
+
+
+    <p><input type="submit" value="Wprowadz podstawowe dane o linii"/></p>
+</form>
+
+<form action="/">
+    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
+</form>
+
+<h3>Obecnie podane dane to:</h3>
+
+<tr><th>Nazwę linii</th></tr>
+<div class="nazwaLinii" th:text="${nazwaLinii}"></div>
+<tr><th>Producenta linii</th></tr>
+<div class="producentLinii" th:text="${producentLinii}"></div>
+<tr><th>Typ linii</th></tr>
+<div class="typLinii" th:text="${typLinii}"></div>
+<tr><th>Numer linii</th></tr>
+<div class="numerLinii" th:text="${numerLinii}"></div>
+<tr><th>Data produkcji</th></tr>
+<div class="dataProdukcji" th:text="${dataProdukcji}"></div>
+<tr><th>Posiadane certyfikaty</th></tr>
+<div class="posiadaneCertyfikaty" th:text="${posiadaneCertyfikaty}"></div>
+
+
+</body>
+</html>

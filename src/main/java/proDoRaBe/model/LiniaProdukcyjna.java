@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class LiniaProdukcyjna {
 
+    //pozniej dodac/zmienic w konstruktorze !!!
+    private LPPodstawoweDaneLinii lPPodstawoweDaneLinii;
     //podstawowe dane linii
     private String nazwaLinii;
     private String producentLinii;
@@ -14,15 +16,21 @@ public class LiniaProdukcyjna {
     // tego nie ma jeszcze w htmlu, do przemyslenia co  lista maszyn w linii
     private ArrayList<Maszyna> maszynay;
 
+
     // opis linii
     private String opisLinii;
     // tego tez nie ma w htmlu
     private Zdjecie zdjecieLinii;
-
     //System sterowania
     private String opisSystemuSterowania;
     // tego tez nie ma w htmlu
     private Zdjecie systemuSterowania;
+    //Zrodla energi
+    private String napiecieWUkladzieSterowania;
+    private String zasilanieGlowne;
+    private String cisnienieRoboczeWUkladziePneumatyki;
+    private String cisnienieRoboczeWUkladzieHydrauliki;
+
 
     //Ograniczenia maszyny
     private String srodowiskoPracy;
@@ -32,6 +40,7 @@ public class LiniaProdukcyjna {
     private String przewidzianyCzasUzytkowania;
     private String wymiaryMaszyny;
     private String srodowiskoPracyMaszyny;
+
 
     //Informacje o obsludze i konserwacji
     private String surowiecDoProdukcji;
@@ -45,11 +54,8 @@ public class LiniaProdukcyjna {
     private String naprawaZaciec;
     private String sprzatanie;
 
-    //Zrodla energi
-    private String napiecieWUkladzieSterowania;
-    private String zasilanieGlowne;
-    private String cisnienieRoboczeWUkladziePneumatyki;
-    private String cisnienieRoboczeWUkladzieHydrauliki;
+    public LiniaProdukcyjna() {
+    }
 
 
     public void dodajLiniaProdukcyjna (
