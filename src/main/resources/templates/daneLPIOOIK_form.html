@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Podaj podstawowe dane dla linii</h1>
+<h2>Informacje o obsludze i konserwacji</h2>
+
+<form action="/dodajLPInformacjeOObsludzeIKonserwacji">
+
+    <tr><th>Podaj obrabiany surowiec</th></tr>
+    <input type="text" name="surowiecDoProdukcji"/>
+    <tr><th>Podaj czas zatrzymania awaryjnego</th></tr>
+    <input type="text" name="czasZatrzymaniaAwaryjnego"/>
+    <tr><th>Podaj czas cyklu maszyny</th></tr>
+    <input type="text" name="czasCykluMaszyny"/>
+    <tr><th>Podaj liczbę operatorów</th></tr>
+    <input type="text" name="liczbaOperatorow"/>
+    <tr><th>Podaj liczbę stacji sterowania</th></tr>
+    <input type="text" name="iloscStacjiOperatorskich"/>
+    <tr><th>Podaj kto wykonuje prace konserwujące</th></tr>
+    <input type="text" name="konserwacjaWykonywanaPrzez"/>
+    <tr><th>Jak często wykonywane są prace konserwujące</th></tr>
+    <input type="text" name="czestotliwoscKonserwacji"/>
+    <tr><th>Podaj kto wykonuje czyszczenie</th></tr>
+    <input type="text" name="czyszczenie"/>
+    <tr><th>Podaj kto usuwa zacięcia</th></tr>
+    <input type="text" name="naprawaZaciec"/>
+    <tr><th>Podaj kto sprząta maszynę</th></tr>
+    <input type="text" name="sprzatanie"/>
+
+    <p><input type="submit" value="Wprowadz podstawowe dane o linii"/></p>
+</form>
+
+<form action="/">
+    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
+</form>
+
+<h3>Obecnie podane dane to:</h3>
+
+<tr><th>Obrabiany surowiec</th></tr>
+<div class="surowiecDoProdukcji" th:text="${surowiecDoProdukcji}"></div>
+<tr><th>Czas zatrzymania awaryjnego</th></tr>
+<div class="czasZatrzymaniaAwaryjnego" th:text="${czasZatrzymaniaAwaryjnego}"></div>
+<tr><th>Czas cyklu maszyny</th></tr>
+<div class="czasCykluMaszyny" th:text="${czasCykluMaszyny}"></div>
+<tr><th>Podana liczba operatorów</th></tr>
+<div class="liczbaOperatorow" th:text="${liczbaOperatorow}"></div>
+<tr><th>Podana liczba stacji sterowania</th></tr>
+<div class="iloscStacjiOperatorskich" th:text="${iloscStacjiOperatorskich}"></div>
+<tr><th>Prace konserwacyjne wykonuje</th></tr>
+<div class="konserwacjaWykonywanaPrzez" th:text="${konserwacjaWykonywanaPrzez}"></div>
+<tr><th>Częstotliwość wykonywania prac konserwujacych</th></tr>
+<div class="czestotliwoscKonserwacji" th:text="${czestotliwoscKonserwacji}"></div>
+<tr><th>PCzyszczenie wykonuje</th></tr>
+<div class="czyszczenie" th:text="${czyszczenie}"></div>
+<tr><th>Zacięcia usuwa</th></tr>
+<div class="naprawaZaciec" th:text="${naprawaZaciec}"></div>
+<tr><th>Maszynę sprząta</th></tr>
+<div class="sprzatanie" th:text="${sprzatanie}"></div>
+
+</body>
+</html>

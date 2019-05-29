@@ -23,7 +23,7 @@ public class ProgramController {
     LPPodstawoweDaneLinii lpPodstawoweDaneLinii = new LPPodstawoweDaneLinii();
     LPOpisLinii lPOpisLinii = new LPOpisLinii();
     LPOgraniczeniaMaszyny lPOgraniczeniaMaszyny = new LPOgraniczeniaMaszyny();
-
+    LPInformacjeOObsludzeIKonserwacji lPInformacjeOObsludzeIKonserwacji = new LPInformacjeOObsludzeIKonserwacji();
 
     LiniaProdukcyjna liniaProdukcyjna = new LiniaProdukcyjna();
 
@@ -127,7 +127,6 @@ public class ProgramController {
         return "daneLPOL_form";
     }
 
-    //NOWE
     @RequestMapping("/dodajLPOgraniczeniaMaszyny")
     public String dodajLPOgraniczeniaMaszyny(
             @RequestParam(value = "srodowiskoPracy", required = false) String srodowiskoPracy,
@@ -157,7 +156,47 @@ public class ProgramController {
 
         return "daneLPOM_form";
     }
-    //NOWE
+
+    @RequestMapping("/dodajLPInformacjeOObsludzeIKonserwacji")
+    public String dodajLPInformacjeOObsludzeIKonserwacji(
+
+            @RequestParam(value = "surowiecDoProdukcji", required = false) String surowiecDoProdukcji,
+            @RequestParam(value = "czasZatrzymaniaAwaryjnego", required = false) String czasZatrzymaniaAwaryjnego,
+            @RequestParam(value = "czasCykluMaszyny", required = false) String czasCykluMaszyny,
+            @RequestParam(value = "liczbaOperatorow", required = false) String liczbaOperatorow,
+            @RequestParam(value = "iloscStacjiOperatorskich", required = false) String iloscStacjiOperatorskich,
+            @RequestParam(value = "konserwacjaWykonywanaPrzez", required = false) String konserwacjaWykonywanaPrzez,
+            @RequestParam(value = "czestotliwoscKonserwacji", required = false) String czestotliwoscKonserwacji,
+            @RequestParam(value = "czyszczenie", required = false) String czyszczenie,
+            @RequestParam(value = "naprawaZaciec", required = false) String naprawaZaciec,
+            @RequestParam(value = "sprzatanie", required = false) String sprzatanie,
+            Model model
+    ) {
+        lPInformacjeOObsludzeIKonserwacji.dodajLPInformacjeOObsludzeIKonserwacji(surowiecDoProdukcji, czasZatrzymaniaAwaryjnego,
+                czasCykluMaszyny, liczbaOperatorow, iloscStacjiOperatorskich, konserwacjaWykonywanaPrzez, czestotliwoscKonserwacji,
+                czyszczenie, naprawaZaciec, sprzatanie);
+        return "redirect:/dodawanieLPInformacjeOObsludzeIKonserwacji";
+    }
+
+    @RequestMapping ("/dodawanieLPInformacjeOObsludzeIKonserwacji")
+    public String dodawanieLPInformacjeOObsludzeIKonserwacji (
+            Model model
+    ) {
+        model.addAttribute("surowiecDoProdukcji",lPInformacjeOObsludzeIKonserwacji.getSurowiecDoProdukcji());
+        model.addAttribute("czasZatrzymaniaAwaryjnego", lPInformacjeOObsludzeIKonserwacji.getCzasZatrzymaniaAwaryjnego());
+        model.addAttribute("liczbaOperatorow",lPInformacjeOObsludzeIKonserwacji.getLiczbaOperatorow());
+        model.addAttribute("iloscStacjiOperatorskich",lPInformacjeOObsludzeIKonserwacji.getIloscStacjiOperatorskich());
+        model.addAttribute("konserwacjaWykonywanaPrzez",lPInformacjeOObsludzeIKonserwacji.getKonserwacjaWykonywanaPrzez());
+        model.addAttribute("czestotliwoscKonserwacji", lPInformacjeOObsludzeIKonserwacji.getCzestotliwoscKonserwacji());
+        model.addAttribute("czyszczenie",lPInformacjeOObsludzeIKonserwacji.getCzyszczenie());
+        model.addAttribute("naprawaZaciec",lPInformacjeOObsludzeIKonserwacji.getNaprawaZaciec());
+        model.addAttribute("sprzatanie",lPInformacjeOObsludzeIKonserwacji.getSprzatanie());
+
+        return "daneLPIOOIK_form";
+    }
+
+
+    // TO CHYBA BEDE WYWALAL / ZMIENIAL !!!!!! POCZATEK
 
     @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
     public String dodajPodstawoweDaneLiniiMaszyny(
@@ -245,16 +284,7 @@ public class ProgramController {
 
         return "danePodstawoweLiniiMaszyny_form";
     }
-
-
-
-
-
-
-
-
-
-
+    // TO CHYBA BEDE WYWALAL / ZMIENIAL !!!!!! KONIEC
 
     @RequestMapping("/dodajDaneDlaRaportu")
     public String dodajDaneDlaRaportu(
@@ -316,8 +346,6 @@ public class ProgramController {
         return "daneWykonujacegoRaport_form";
     }
 
-
-
     @RequestMapping("/dodajDaneZamawiajacegoRaport")
     public String dodajDaneZamawiajacegoRaport(
             @RequestParam(value = "nazwaFirmy", required = false) String nazwaFirmy,
@@ -347,13 +375,6 @@ public class ProgramController {
 
         return "daneZamawiajacegoRaport_form";
     }
-
-
-
-
-
-
-
 
     @RequestMapping("/pierwszaStrona_form")
     public String StronaPoczatkowa() {
