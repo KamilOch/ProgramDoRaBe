@@ -9,8 +9,8 @@ public class ListaMaszyn {
     private Map<String, Maszyna> maszyny = new HashMap<>();
     String wiadomosc;
 
-    public synchronized String dodajMaszyne(String nazwaMaszyny, Maszyna maszyna) {
-
+    public synchronized void /*String*/ dodajMaszyne(String nazwaMaszyny, Maszyna maszyna) {
+/*
         if (nazwaMaszyny.equals("")) {
             wiadomosc = "Nie podałęś nazwy maszyny";
             System.out.println(wiadomosc);
@@ -25,6 +25,9 @@ public class ListaMaszyn {
             System.out.println(wiadomosc);
             return wiadomosc;
         }
+
+ */
+        maszyny.put(nazwaMaszyny,maszyna);
     }
 
     public synchronized Maszyna podajMaszyny(String kto) {

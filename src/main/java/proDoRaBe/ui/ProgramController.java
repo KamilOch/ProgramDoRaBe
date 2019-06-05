@@ -30,12 +30,12 @@ public class ProgramController {
     Raport raport = new Raport (daneRaportu, liniaProdukcyjna);
 
 
-
+/*
     void tworzenieMaszynyWMapie (String nazwa, String nazwaMaszyny, String producentMaszyny, String typMaszyny, String numerMaszyny, String dataProdukcji, String posiadaneCertyfikaty){
         String zmienna = nazwa;
         maszyny.dodajMaszyne(zmienna, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny, dataProdukcji,posiadaneCertyfikaty));
     }
-
+*/
 
     @RequestMapping("/dodajMaszyne")
     public String dodajMaszyne(
@@ -47,25 +47,28 @@ public class ProgramController {
             @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
             Model model
     ) {
+
         // linia kodu 45 nie dziala, trzeba zmienic
-        //maszyny.dodajMaszyne(nazwaMaszyny, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty));
-        return "redirect:/dodawanieMaszyny";
+       // maszyny.dodajMaszyne(nazwaMaszyny, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty));
+        Maszyna maszyna = new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty);
+        maszyny.dodajMaszyne(nazwaMaszyny,maszyna);
+        return "redirect:/dodawanieMaszyny?nazwaMaszyny="+nazwaMaszyny;
     }
 
     @RequestMapping ("/dodawanieMaszyny")
     public String dodawanieMaszyny (
+            @RequestParam(value = "nazwaMaszyny", required = false) String nazwaMaszyny,
             Model model
     ) {
-        // tymcxasowo tutaj, moze zostanie do przemyslenia
-        Maszyna maszyna = new Maszyna();
-        // tu trzeba poprawic !!!! zaczac od poprawienia geterow!!!!!
-        model.addAttribute("nazwaMaszyny", maszyna.getNazwaMaszyny());
-        model.addAttribute("producentMaszyny",maszyna.getProducentMaszyny());
-        model.addAttribute("typMaszyny",maszyna.getTypMaszyny());
-        model.addAttribute("numerMaszyny",maszyna.getNumerMaszyny());
-        model.addAttribute("dataProdukcji",maszyna.getDataProdukcji());
-        model.addAttribute("posiadaneCertyfikaty",maszyna.getPosiadaneCertyfikaty());
-
+        Maszyna mojaMaszyna = maszyny.podajMaszyny(nazwaMaszyny);
+        if (mojaMaszyna != null) {
+            model.addAttribute("nazwaMaszyny", mojaMaszyna.getNazwaMaszyny());
+            model.addAttribute("producentMaszyny", mojaMaszyna.getProducentMaszyny());
+            model.addAttribute("typMaszyny", mojaMaszyna.getTypMaszyny());
+            model.addAttribute("numerMaszyny", mojaMaszyna.getNumerMaszyny());
+            model.addAttribute("dataProdukcji", mojaMaszyna.getDataProdukcji());
+            model.addAttribute("posiadaneCertyfikaty", mojaMaszyna.getPosiadaneCertyfikaty());
+        }
         return "daneMaszyny_form";
     }
     @RequestMapping("/dodajLPPDL")
@@ -195,7 +198,7 @@ public class ProgramController {
         return "daneLPIOOIK_form";
     }
 
-
+/*
     // TO CHYBA BEDE WYWALAL / ZMIENIAL !!!!!! POCZATEK
 
     @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
@@ -285,7 +288,7 @@ public class ProgramController {
         return "danePodstawoweLiniiMaszyny_form";
     }
     // TO CHYBA BEDE WYWALAL / ZMIENIAL !!!!!! KONIEC
-
+*/
     @RequestMapping("/dodajDaneDlaRaportu")
     public String dodajDaneDlaRaportu(
             @RequestParam(value = "tytulRaportu", required = false) String tytulRaportu,
