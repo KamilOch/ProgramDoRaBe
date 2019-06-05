@@ -38,6 +38,7 @@ public class ListaMaszyn {
     public synchronized Set<String> podajNazwyMaszyn() {
         HashMap<String, Maszyna> kopiaMaszyn = new HashMap<>(maszyny);
         return kopiaMaszyn.keySet();
+
     }
 
 }

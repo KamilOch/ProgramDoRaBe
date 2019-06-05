@@ -37,6 +37,17 @@ public class ProgramController {
     }
 */
 
+    @RequestMapping("/listaMaszyn")
+    public String listaMaszyn (
+
+            Model model
+    ){
+        model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
+
+        return "listaMaszyn_form";
+    }
+
+
     @RequestMapping("/dodajMaszyne")
     public String dodajMaszyne(
             @RequestParam(value = "nazwaMaszyny", required = false) String nazwaMaszyny,
