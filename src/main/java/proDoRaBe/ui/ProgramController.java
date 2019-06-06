@@ -48,11 +48,9 @@ public class ProgramController {
             Model model
     ){
         Maszyna nowaMaszyna = new Maszyna (nazwaMaszyny,producentMaszyny, typMaszyny,numerMaszyny,dataProdukcji, posiadaneCertyfikaty);
-        maszyny.usunMaszyne(nazwaMaszyny);
         maszyny.dodajMaszyne(nazwaMaszyny,nowaMaszyna);
-        //Maszyna mojaMaszyna = maszyny.podajMaszyny(nazwaMaszyny);
 
-        return "redirect:/edytowanie";
+        return "redirect:/edytowanie?wybranaMaszyna="+nazwaMaszyny;
     }
 
     @RequestMapping("/edytowanie")
