@@ -37,6 +37,44 @@ public class ProgramController {
     }
 */
 
+    @RequestMapping("/edytowanieMaszyny")
+    public String edytowanieMaszyny (
+            @RequestParam(value = "nazwaMaszyny", required = false) String nazwaMaszyny,
+            @RequestParam(value = "producentMaszyny", required = false) String  producentMaszyny,
+            @RequestParam(value = "typMaszyny", required = false) String typMaszyny,
+            @RequestParam(value = "numerMaszyny", required = false) String numerMaszyny,
+            @RequestParam(value = "dataProdukcji", required = false) String dataProdukcji,
+            @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
+            Model model
+    ){
+        Maszyna mojaMaszyna = maszyny.podajMaszyny(nazwaMaszyny);
+
+        return "/listaMaszyn";
+    }
+
+    @RequestMapping("/edytowanie")
+    public String edytowanie (
+            @RequestParam(value = "wybranaMaszyna", required = false) String wybranaMaszyna,
+            Model model
+    ){
+        Maszyna mojaMaszyna = maszyny.podajMaszyny(wybranaMaszyna);
+        if (mojaMaszyna != null) {
+            model.addAttribute("nazwaMaszyny", mojaMaszyna.getNazwaMaszyny());
+            model.addAttribute("producentMaszyny", mojaMaszyna.getProducentMaszyny());
+            model.addAttribute("typMaszyny", mojaMaszyna.getTypMaszyny());
+            model.addAttribute("numerMaszyny", mojaMaszyna.getNumerMaszyny());
+            model.addAttribute("dataProdukcji", mojaMaszyna.getDataProdukcji());
+            model.addAttribute("posiadaneCertyfikaty", mojaMaszyna.getPosiadaneCertyfikaty());
+        }
+        return "edycjaMaszyny_form";
+    }
+
+
+
+
+
+
+
     @RequestMapping("/listaMaszyn")
     public String listaMaszyn (
 
