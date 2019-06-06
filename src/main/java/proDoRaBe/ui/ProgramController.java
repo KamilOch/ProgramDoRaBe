@@ -47,9 +47,12 @@ public class ProgramController {
             @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
             Model model
     ){
-        Maszyna mojaMaszyna = maszyny.podajMaszyny(nazwaMaszyny);
+        Maszyna nowaMaszyna = new Maszyna (nazwaMaszyny,producentMaszyny, typMaszyny,numerMaszyny,dataProdukcji, posiadaneCertyfikaty);
+        maszyny.usunMaszyne(nazwaMaszyny);
+        maszyny.dodajMaszyne(nazwaMaszyny,nowaMaszyna);
+        //Maszyna mojaMaszyna = maszyny.podajMaszyny(nazwaMaszyny);
 
-        return "/listaMaszyn";
+        return "redirect:/edytowanie";
     }
 
     @RequestMapping("/edytowanie")
