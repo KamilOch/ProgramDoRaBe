@@ -12,6 +12,7 @@ import java.util.ArrayList;
 @Controller
 public class ProgramController {
 
+    String wiadomosc;
     private ListaMaszyn maszyny = new ListaMaszyn();
 
     DaneZamawiajacegoRaport daneZamawiajacegoRaport = new DaneZamawiajacegoRaport();
@@ -36,15 +37,13 @@ public class ProgramController {
         maszyny.dodajMaszyne(zmienna, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny, dataProdukcji,posiadaneCertyfikaty));
     }
 */
-@RequestMapping("/usuwanie")
-public String usuwanie (
+    @RequestMapping("/usuwanie")
+    public String usuwanie (
         Model model
-){
+    ){
     model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
     return "usuwanieMaszyn_form";
-}
-
-
+    }
     @RequestMapping ("/usuwanieMaszyny")
     public String usuwanieMaszyny (
             @RequestParam(value = "wybranaMaszyna", required = false) String nazwaMaszyny,
@@ -53,7 +52,6 @@ public String usuwanie (
         maszyny.usunMaszyne(nazwaMaszyny);
         return "redirect:/listaMaszyn";
     }
-
     @RequestMapping("/edytowanieMaszyny")
     public String edytowanieMaszyny (
             @RequestParam(value = "nazwaMaszyny", required = false) String nazwaMaszyny,
@@ -69,7 +67,6 @@ public String usuwanie (
 
         return "redirect:/edytowanie?wybranaMaszyna="+nazwaMaszyny;
     }
-
     @RequestMapping("/edytowanie")
     public String edytowanie (
             @RequestParam(value = "wybranaMaszyna", required = false) String wybranaMaszyna,
@@ -86,7 +83,6 @@ public String usuwanie (
         }
         return "edycjaMaszyny_form";
     }
-
     @RequestMapping("/listaMaszyn")
     public String listaMaszyn (
 
@@ -96,8 +92,6 @@ public String usuwanie (
 
         return "listaMaszyn_form";
     }
-
-
     @RequestMapping("/dodajMaszyne")
     public String dodajMaszyne(
             @RequestParam(value = "nazwaMaszyny", required = false) String nazwaMaszyny,
@@ -108,14 +102,12 @@ public String usuwanie (
             @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
             Model model
     ) {
-
-        // linia kodu 45 nie dziala, trzeba zmienic
-       // maszyny.dodajMaszyne(nazwaMaszyny, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty));
         Maszyna maszyna = new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty);
         maszyny.dodajMaszyne(nazwaMaszyny,maszyna);
+        wiadomosc = maszyny.getWiadomosc();
+
         return "redirect:/dodawanieMaszyny?nazwaMaszyny="+nazwaMaszyny;
     }
-
     @RequestMapping ("/dodawanieMaszyny")
     public String dodawanieMaszyny (
             @RequestParam(value = "nazwaMaszyny", required = false) String nazwaMaszyny,
@@ -130,6 +122,7 @@ public String usuwanie (
             model.addAttribute("dataProdukcji", mojaMaszyna.getDataProdukcji());
             model.addAttribute("posiadaneCertyfikaty", mojaMaszyna.getPosiadaneCertyfikaty());
         }
+        model.addAttribute("wiadomosc", wiadomosc);
         return "daneMaszyny_form";
     }
     @RequestMapping("/dodajLPPDL")
@@ -140,7 +133,6 @@ public String usuwanie (
             @RequestParam(value = "numerLinii", required = false) String numerLinii,
             @RequestParam(value = "dataProdukcji", required = false) String dataProdukcji,
             @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
-            // brak listy maszyn
             Model model
     ) {
         lpPodstawoweDaneLinii.dodajLPPodstawoweDaneLinii(nazwaLinii, producentLinii, typLinii, numerLinii, dataProdukcji, posiadaneCertyfikaty);
