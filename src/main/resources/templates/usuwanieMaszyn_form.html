@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Lista dodanych maszyn</h1>
-<h2>Nazwa</h2>
-<form action="/edytowanie">
+<h1>Uwaga usuwanie maszyn</h1>
+<h2>wybierz maszyne do skasowania</h2>
+<form action="/usuwanieMaszyny">
     <select class="row" id="maszyny" name="wybranaMaszyna" >
         <option th:each="maszyna : ${maszyny}"
 
@@ -17,15 +17,11 @@
         >Brak maszyn</option>
     </select>
 
-    <p><input type="submit" value="Edytuj dodaną maszyne"/></p>
+    <p><input type="submit" value="Usuń wubraną maszynę"/></p>
 </form>
 
 <form action="/dodawanieMaszyny">
     <p><input type="submit" value=" Strona dodawania maszyny"/></p>
-</form>
-
-<form action="/usuwanie">
-    <p><input type="submit" value=" Strona usuwania maszyny"/></p>
 </form>
 
 <form action="/">

@@ -36,6 +36,23 @@ public class ProgramController {
         maszyny.dodajMaszyne(zmienna, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny, dataProdukcji,posiadaneCertyfikaty));
     }
 */
+@RequestMapping("/usuwanie")
+public String usuwanie (
+        Model model
+){
+    model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
+    return "usuwanieMaszyn_form";
+}
+
+
+    @RequestMapping ("/usuwanieMaszyny")
+    public String usuwanieMaszyny (
+            @RequestParam(value = "wybranaMaszyna", required = false) String nazwaMaszyny,
+            Model model
+    ){
+        maszyny.usunMaszyne(nazwaMaszyny);
+        return "redirect:/listaMaszyn";
+    }
 
     @RequestMapping("/edytowanieMaszyny")
     public String edytowanieMaszyny (
@@ -69,12 +86,6 @@ public class ProgramController {
         }
         return "edycjaMaszyny_form";
     }
-
-
-
-
-
-
 
     @RequestMapping("/listaMaszyn")
     public String listaMaszyn (
