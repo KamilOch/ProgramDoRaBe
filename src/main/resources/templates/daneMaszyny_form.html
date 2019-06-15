@@ -13,17 +13,17 @@
 <form action="/dodajMaszyne" method="post">
 
     <tr><th>Podaj nazwę maszyny</th></tr>
-    <input type="text" name="nazwaMaszyny"/>
+    <input type="text" name="nazwaMaszyny" th:value="${maszyna.nazwaMaszyny}"/>
     <tr><th>Podaj producenta maszyny</th></tr>
-    <input type="text" name="producentMaszyny"/>
+    <input type="text" name="producentMaszyny" th:value="${maszyna.producentMaszyny}"/>
     <tr><th>Podaj typ maszyny</th></tr>
-    <input type="text" name="typMaszyny"/>
+    <input type="text" name="typMaszyny" th:value="${maszyna.typMaszyny}"/>
     <tr><th>Podaj numer maszynyu</th></tr>
-    <input type="text" name="numerMaszyny"/>
+    <input type="text" name="numerMaszyny" th:value="${maszyna.numerMaszyny}"/>
     <tr><th>Podaj daję produkcji</th></tr>
-    <input type="text" name="dataProdukcji"/>
+    <input type="text" name="dataProdukcji" th:value="${maszyna.dataProdukcji}"/>
     <tr><th>Podaj posiadane certyfikaty</th></tr>
-    <input type="text" name="posiadaneCertyfikaty"/>
+    <input type="text" name="posiadaneCertyfikaty" th:value="${maszyna.posiadaneCertyfikaty}"/>
 
     <p><input type="submit" value="Dodaj maszynę"/></p>
 </form>

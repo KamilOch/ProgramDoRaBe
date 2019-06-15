@@ -7,7 +7,7 @@ import java.util.Set;
 public class ListaMaszyn {
 
     private Map<String, Maszyna> maszyny = new HashMap<>();
-   String wiadomosc;
+   //String wiadomosc;
 
    public ListaMaszyn(){
        maszyny.put("a", new Maszyna("a", "a prd", "aaaa", null, null,null));
@@ -18,22 +18,20 @@ public class ListaMaszyn {
     public synchronized void  usunMaszyne(String nazwaMaszyny) {
         maszyny.remove(nazwaMaszyny);
     }
-    public synchronized void /*String*/ dodajMaszyne(String nazwaMaszyny, Maszyna maszyna) {
-
+    public synchronized String dodajMaszyne(String nazwaMaszyny, Maszyna maszyna) {
+        String wiadomosc;
         if (nazwaMaszyny.equals("")) {
             wiadomosc = "Nie podałęś nazwy maszyny";
             System.out.println(wiadomosc);
-
         } else if (maszyny.containsKey(nazwaMaszyny)) {
-            wiadomosc = "Podałeś "+nazwaMaszyny+" ale taka maszyna już istnieje, podaj innyą nazwę";
+            wiadomosc = "Podałeś "+nazwaMaszyny+" ale taka maszyna już istnieje, podaj inną nazwę";
             System.out.println(wiadomosc);
-
         }   else {
             maszyny.put(nazwaMaszyny, maszyna);
-            wiadomosc =  "Dodano nową maszynę";
+            wiadomosc =  "Dodano nową maszynę o nazwie "+nazwaMaszyny;
             System.out.println(wiadomosc);
-
         }
+        return wiadomosc;
     }
 
     public synchronized Maszyna podajMaszyny(String kto) {
@@ -45,9 +43,5 @@ public class ListaMaszyn {
         HashMap<String, Maszyna> kopiaMaszyn = new HashMap<>(maszyny);
         return kopiaMaszyn.keySet();
 
-    }
-
-    public String getWiadomosc() {
-        return wiadomosc;
     }
 }

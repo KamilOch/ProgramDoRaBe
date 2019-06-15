@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import proDoRaBe.model.Raport;
 import proDoRaBe.model.*;
 
-import java.util.ArrayList;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.io.UnsupportedEncodingException;
+
 
 @Controller
 public class ProgramController {
 
-    String wiadomosc;
     private ListaMaszyn maszyny = new ListaMaszyn();
 
     DaneZamawiajacegoRaport daneZamawiajacegoRaport = new DaneZamawiajacegoRaport();
@@ -31,19 +33,14 @@ public class ProgramController {
     Raport raport = new Raport (daneRaportu, liniaProdukcyjna);
 
 
-/*
-    void tworzenieMaszynyWMapie (String nazwa, String nazwaMaszyny, String producentMaszyny, String typMaszyny, String numerMaszyny, String dataProdukcji, String posiadaneCertyfikaty){
-        String zmienna = nazwa;
-        maszyny.dodajMaszyne(zmienna, new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny, dataProdukcji,posiadaneCertyfikaty));
+    private static String encodeValue(String value) {
+        try {
+            return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException(ex.getCause());
+        }
     }
-*/
-    @RequestMapping("/usuwanie")
-    public String usuwanie (
-        Model model
-    ){
-    model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
-    return "usuwanieMaszyn_form";
-    }
+
     @RequestMapping ("/usuwanieMaszyny")
     public String usuwanieMaszyny (
             @RequestParam(value = "wybranaMaszyna", required = false) String nazwaMaszyny,
@@ -62,6 +59,7 @@ public class ProgramController {
             @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
             Model model
     ){
+        maszyny.usunMaszyne(nazwaMaszyny);
         Maszyna nowaMaszyna = new Maszyna (nazwaMaszyny,producentMaszyny, typMaszyny,numerMaszyny,dataProdukcji, posiadaneCertyfikaty);
         maszyny.dodajMaszyne(nazwaMaszyny,nowaMaszyna);
 
@@ -74,19 +72,12 @@ public class ProgramController {
     ){
         Maszyna mojaMaszyna = maszyny.podajMaszyny(wybranaMaszyna);
         if (mojaMaszyna != null) {
-//            model.addAttribute("nazwaMaszyny", mojaMaszyna.getNazwaMaszyny());
-//            model.addAttribute("producentMaszyny", mojaMaszyna.getProducentMaszyny());
-//            model.addAttribute("typMaszyny", mojaMaszyna.getTypMaszyny());
-//            model.addAttribute("numerMaszyny", mojaMaszyna.getNumerMaszyny());
-//            model.addAttribute("dataProdukcji", mojaMaszyna.getDataProdukcji());
-//            model.addAttribute("posiadaneCertyfikaty", mojaMaszyna.getPosiadaneCertyfikaty());
               model.addAttribute("maszyna", mojaMaszyna);
         }
         return "edycjaMaszyny_form";
     }
     @RequestMapping("/listaMaszyn")
     public String listaMaszyn (
-
             Model model
     ){
         model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
@@ -104,26 +95,23 @@ public class ProgramController {
             Model model
     ) {
         Maszyna maszyna = new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty);
-        maszyny.dodajMaszyne(nazwaMaszyny,maszyna);
-        wiadomosc = maszyny.getWiadomosc();
 
-        return "redirect:/dodawanieMaszyny?nazwaMaszyny="+nazwaMaszyny;
+        String wiadomosc = encodeValue(maszyny.dodajMaszyne(nazwaMaszyny,maszyna));
+
+        return "redirect:/dodawanieMaszyny?nazwaMaszyny="+nazwaMaszyny+"&wiadomosc="+wiadomosc;
     }
     @RequestMapping ("/dodawanieMaszyny")
     public String dodawanieMaszyny (
             @RequestParam(value = "nazwaMaszyny", required = false) String nazwaMaszyny,
+            @RequestParam(value = "wiadomosc", required = false) String wiadomosc,
             Model model
     ) {
         Maszyna mojaMaszyna = maszyny.podajMaszyny(nazwaMaszyny);
-        if (mojaMaszyna != null) {
-            model.addAttribute("nazwaMaszyny", mojaMaszyna.getNazwaMaszyny());
-            model.addAttribute("producentMaszyny", mojaMaszyna.getProducentMaszyny());
-            model.addAttribute("typMaszyny", mojaMaszyna.getTypMaszyny());
-            model.addAttribute("numerMaszyny", mojaMaszyna.getNumerMaszyny());
-            model.addAttribute("dataProdukcji", mojaMaszyna.getDataProdukcji());
-            model.addAttribute("posiadaneCertyfikaty", mojaMaszyna.getPosiadaneCertyfikaty());
+        if (mojaMaszyna == null) {
+            mojaMaszyna = new Maszyna(null, null, null, null, "aaaaa", null);
         }
         model.addAttribute("wiadomosc", wiadomosc);
+        model.addAttribute("maszyna", mojaMaszyna);
         return "daneMaszyny_form";
     }
     @RequestMapping("/dodajLPPDL")
@@ -252,97 +240,6 @@ public class ProgramController {
         return "daneLPIOOIK_form";
     }
 
-/*
-    // TO CHYBA BEDE WYWALAL / ZMIENIAL !!!!!! POCZATEK
-
-    @RequestMapping("/dodajPodstawoweDaneLiniiMaszyny")
-    public String dodajPodstawoweDaneLiniiMaszyny(
-            @RequestParam(value = "nazwaLinii", required = false) String nazwaLinii,
-            @RequestParam(value = "producentLinii", required = false) String producentLinii,
-            @RequestParam(value = "typLinii", required = false) String typLinii,
-            @RequestParam(value = "numerLinii", required = false) String numerLinii,
-            @RequestParam(value = "dataProdukcji", required = false) String dataProdukcji,
-            @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
-            // brak listy maszyn
-            @RequestParam(value = "opisLinii", required = false) String opisLinii,
-            // brak zdjecia linii
-            @RequestParam(value = "opisSystemuSterowania", required = false) String opisSystemuSterowania,
-            // brak zdjecia sterowania
-            @RequestParam(value = "srodowiskoPracy", required = false) String srodowiskoPracy,
-            @RequestParam(value = "wymaganyPoziomSzkolenia", required = false) String wymaganyPoziomSzkolenia,
-            @RequestParam(value = "liniaObslugiwanaPrzez", required = false) String liniaObslugiwanaPrzez,
-            @RequestParam(value = "przeznaczenieLinii", required = false) String przeznaczenieLinii,
-            @RequestParam(value = "przewidzianyCzasUzytkowania", required = false) String przewidzianyCzasUzytkowania,
-            @RequestParam(value = "wymiaryMaszyny", required = false) String wymiaryMaszyny,
-            @RequestParam(value = "srodowiskoPracyMaszyny", required = false) String srodowiskoPracyMaszyny,
-            @RequestParam(value = "surowiecDoProdukcji", required = false) String surowiecDoProdukcji,
-            @RequestParam(value = "czasZatrzymaniaAwaryjnego", required = false) String czasZatrzymaniaAwaryjnego,
-            @RequestParam(value = "czasCykluMaszyny", required = false) String czasCykluMaszyny,
-            @RequestParam(value = "liczbaOperatorow", required = false) String liczbaOperatorow,
-            @RequestParam(value = "iloscStacjiOperatorskich", required = false) String iloscStacjiOperatorskich,
-            @RequestParam(value = "konserwacjaWykonywanaPrzez", required = false) String konserwacjaWykonywanaPrzez,
-            @RequestParam(value = "czestotliwoscKonserwacji", required = false) String czestotliwoscKonserwacji,
-            @RequestParam(value = "czyszczenie", required = false) String czyszczenie,
-            @RequestParam(value = "naprawaZaciec", required = false) String naprawaZaciec,
-            @RequestParam(value = "sprzatanie", required = false) String sprzatanie,
-            @RequestParam(value = "napiecieWUkladzieSterowania", required = false) String  napiecieWUkladzieSterowania,
-            @RequestParam(value = "zasilanieGlowne", required = false) String  zasilanieGlowne,
-            @RequestParam(value = "cisnienieRoboczeWUkladziePneumatyki", required = false) String  cisnienieRoboczeWUkladziePneumatyki,
-            @RequestParam(value = "cisnienieRoboczeWUkladzieHydrauliki", required = false) String  cisnienieRoboczeWUkladzieHydrauliki,
-            Model model
-    ) {
-       liniaProdukcyjna.dodajLiniaProdukcyjna(nazwaLinii, producentLinii, typLinii, numerLinii, dataProdukcji, posiadaneCertyfikaty,
-               opisLinii, opisSystemuSterowania, srodowiskoPracy, wymaganyPoziomSzkolenia, liniaObslugiwanaPrzez, przeznaczenieLinii,
-               przewidzianyCzasUzytkowania, wymiaryMaszyny, srodowiskoPracyMaszyny, surowiecDoProdukcji, czasZatrzymaniaAwaryjnego,
-               czasCykluMaszyny, liczbaOperatorow, iloscStacjiOperatorskich, konserwacjaWykonywanaPrzez, czestotliwoscKonserwacji,
-               czyszczenie, naprawaZaciec, sprzatanie, napiecieWUkladzieSterowania, zasilanieGlowne, cisnienieRoboczeWUkladziePneumatyki,
-               cisnienieRoboczeWUkladzieHydrauliki);
-        return "redirect:/dodawaniePodstawoweDaneLiniiMaszyny";
-    }
-
-    @RequestMapping ("/dodawaniePodstawoweDaneLiniiMaszyny")
-    public String dodawaniePodstawoweDaneLiniiMaszyny (
-            Model model
-    ) {
-        model.addAttribute("nazwaLinii", liniaProdukcyjna.getNazwaLinii());
-        model.addAttribute("producentLinii",liniaProdukcyjna.getProducentLinii());
-        model.addAttribute("typLinii",liniaProdukcyjna.getTypLinii());
-        model.addAttribute("numerLinii",liniaProdukcyjna.getNumerLinii());
-
-        model.addAttribute("dataProdukcji", liniaProdukcyjna.getDataProdukcji());
-        model.addAttribute("posiadaneCertyfikaty",liniaProdukcyjna.getPosiadaneCertyfikaty());
-        model.addAttribute("opisLinii",liniaProdukcyjna.getOpisLinii());
-        model.addAttribute("opisSystemuSterowania",liniaProdukcyjna.getOpisSystemuSterowania());
-
-        model.addAttribute("srodowiskoPracy", liniaProdukcyjna.getSrodowiskoPracy());
-        model.addAttribute("wymaganyPoziomSzkolenia",liniaProdukcyjna.getWymaganyPoziomSzkolenia());
-        model.addAttribute("liniaObslugiwanaPrzez",liniaProdukcyjna.getLiniaObslugiwanaPrzez());
-        model.addAttribute("przeznaczenieLinii",liniaProdukcyjna.getPrzeznaczenieLinii());
-
-        model.addAttribute("przewidzianyCzasUzytkowania", liniaProdukcyjna.getPrzewidzianyCzasUzytkowania());
-        model.addAttribute("czasCykluMaszyny",liniaProdukcyjna.getCzasCykluMaszyny());
-        model.addAttribute("srodowiskoPracyMaszyny",liniaProdukcyjna.getSrodowiskoPracyMaszyny());
-        model.addAttribute("surowiecDoProdukcji",liniaProdukcyjna.getSurowiecDoProdukcji());
-
-        model.addAttribute("czasZatrzymaniaAwaryjnego", liniaProdukcyjna.getCzasZatrzymaniaAwaryjnego());
-        model.addAttribute("liczbaOperatorow",liniaProdukcyjna.getLiczbaOperatorow());
-        model.addAttribute("iloscStacjiOperatorskich",liniaProdukcyjna.getIloscStacjiOperatorskich());
-        model.addAttribute("konserwacjaWykonywanaPrzez",liniaProdukcyjna.getKonserwacjaWykonywanaPrzez());
-
-        model.addAttribute("czestotliwoscKonserwacji", liniaProdukcyjna.getCzestotliwoscKonserwacji());
-        model.addAttribute("czyszczenie",liniaProdukcyjna.getCzyszczenie());
-        model.addAttribute("naprawaZaciec",liniaProdukcyjna.getNaprawaZaciec());
-        model.addAttribute("sprzatanie",liniaProdukcyjna.getSprzatanie());
-
-        model.addAttribute("napiecieWUkladzieSterowania", liniaProdukcyjna.getNapiecieWUkladzieSterowania());
-        model.addAttribute("zasilanieGlowne",liniaProdukcyjna.getZasilanieGlowne());
-        model.addAttribute("cisnienieRoboczeWUkladziePneumatyki",liniaProdukcyjna.getCisnienieRoboczeWUkladziePneumatyki());
-        model.addAttribute("cisnienieRoboczeWUkladzieHydrauliki",liniaProdukcyjna.getCisnienieRoboczeWUkladzieHydrauliki());
-
-        return "danePodstawoweLiniiMaszyny_form";
-    }
-    // TO CHYBA BEDE WYWALAL / ZMIENIAL !!!!!! KONIEC
-*/
     @RequestMapping("/dodajDaneDlaRaportu")
     public String dodajDaneDlaRaportu(
             @RequestParam(value = "tytulRaportu", required = false) String tytulRaportu,
