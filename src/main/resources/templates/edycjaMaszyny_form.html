@@ -9,52 +9,29 @@
 
 <form action="/edytowanieMaszyny">
 
-  <!--  <tr><th>Podaj nazwę maszyny</th></tr>
-    <input type="text" name="nazwaMaszyny"/> -->
-
-    <input type = "hidden" name="nazwaMaszyny" th:value="${nazwaMaszyny}" />
-
+    <input type = "hidden" name="nazwaMaszyny" th:value="${maszyna.nazwaMaszyny}" />
 
     <tr><th>Podaj producenta maszyny</th></tr>
-    <input type="text" name="producentMaszyny" th:value="${producentMaszyny}"/>
+    <input type="text" name="producentMaszyny" th:value="${maszyna.producentMaszyny}"/>
     <tr><th>Podaj typ maszyny</th></tr>
-    <input type="text" name="typMaszyny"/>
+    <input type="text" name="typMaszyny" th:value="${maszyna.typMaszyny}"/>
     <tr><th>Podaj numer maszynyu</th></tr>
-    <input type="text" name="numerMaszyny"/>
+    <input type="text" name="numerMaszyny" th:value="${maszyna.numerMaszyny}"/>
     <tr><th>Podaj daję produkcji</th></tr>
-    <input type="text" name="dataProdukcji"/>
+    <input type="text" name="dataProdukcji" th:value="${maszyna.dataProdukcji}"/>
     <tr><th>Podaj posiadane certyfikaty</th></tr>
-    <input type="text" name="posiadaneCertyfikaty"/>
+    <input type="text" name="posiadaneCertyfikaty" th:value="${maszyna.posiadaneCertyfikaty}"/>
 
-    <p><input type="submit" value="Edytuj maszynę"/></p>
+    <p><input type="submit" value="Zapisz zmiany"/></p>
 </form>
 
-<form action="/listaMaszyn">
-    <p><input type="submit" value=" Lista maszyn"/></p>
-</form>
+<a href="/listaMaszyn">
+    <p><button>Lista maszyn</button></p>
+</a>
 
-<form action="/">
-    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
-</form>
-
-<h3>Obecnie podane dane to:</h3>
-<tr><th>Nazwa maszyny:</th></tr>
-<div class="nazwaMaszyny" th:text="${nazwaMaszyny}"></div>
-
-<tr><th>Producent maszyny:</th></tr>
-<div class="producentMaszyny" th:text="${producentMaszyny}"></div>
-
-<tr><th>Typ maszyny:</th></tr>
-<div class="typMaszyny" th:text="${maszyna.typMaszyny}"></div>
-
-<tr><th>Numer maszyny</th></tr>
-<div class="numerMaszyny" th:text="${numerMaszyny}"></div>
-
-<tr><th>Data produkcji maszyny</th></tr>
-<div class="dataProdukcji" th:text="${dataProdukcji}"></div>
-
-<tr><th>Posiadane certyfikaty maszyny</th></tr>
-<div class="posiadaneCertyfikaty" th:text="${posiadaneCertyfikaty}"></div>
+<a href="/">
+    <p><button>Powrót na stronę poczatkową</button></p>
+</a>
 
 </body>
 </html>

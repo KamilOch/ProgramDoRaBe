@@ -80,7 +80,7 @@ public class ProgramController {
 //            model.addAttribute("numerMaszyny", mojaMaszyna.getNumerMaszyny());
 //            model.addAttribute("dataProdukcji", mojaMaszyna.getDataProdukcji());
 //            model.addAttribute("posiadaneCertyfikaty", mojaMaszyna.getPosiadaneCertyfikaty());
-            model.addAttribute("maszyna", mojaMaszyna);
+              model.addAttribute("maszyna", mojaMaszyna);
         }
         return "edycjaMaszyny_form";
     }

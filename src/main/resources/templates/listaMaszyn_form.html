@@ -6,26 +6,6 @@
 </head>
 <body>
 <h1>Lista dodanych maszyn</h1>
-<h2>Nazwa</h2>
-<form action="/edytowanie">
-    <select class="row" id="maszyny" name="wybranaMaszyna" >
-        <option th:each="maszyna : ${maszyny}"
-
-                th:text="${maszyna}"
-                th:value="${maszyna}"
-
-        >Brak maszyn</option>
-    </select>
-    <p><input type="submit" value="Edytuj dodaną maszyne"/></p>
-</form>
-<ul>
-    <li th:each="maszyna : ${maszyny}"
-
-            th:text="${maszyna}"
-
-    >Brak maszyn</li>
-</ul>
-
 
     <table>
         <tr><th>Nazwa</th><th></th></tr>
@@ -39,22 +19,13 @@
         </tr>
     </table>
 
+<a href="/dodawanieMaszyny">
+    <p><button>Strona dodawania maszyny</button></p>
+</a>
 
-
-
-<form action="/dodawanieMaszyny">
-    <p><input type="submit" value=" Strona dodawania maszyny"/></p>
-</form>
-
-<form action="/usuwanie" method="post">
-    <p><input type="submit" value=" Strona usuwania maszyny"/></p>
-</form>
-
-<form action="/">
-    <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
-</form>
-
-
+<a href="/">
+    <p><button>Powrót na stronę poczatkową</button></p>
+</a>
 
 </body>
 </html>
