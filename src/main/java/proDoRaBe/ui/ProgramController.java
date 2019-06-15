@@ -108,7 +108,7 @@ public class ProgramController {
     ) {
         Maszyna mojaMaszyna = maszyny.podajMaszyny(nazwaMaszyny);
         if (mojaMaszyna == null) {
-            mojaMaszyna = new Maszyna(null, null, null, null, "aaaaa", null);
+            mojaMaszyna = new Maszyna("wprowadz dane", "wprowadz dane", "wprowadz dane", "wprowadz dane", "wprowadz dane", "wprowadz dane");
         }
         model.addAttribute("wiadomosc", wiadomosc);
         model.addAttribute("maszyna", mojaMaszyna);

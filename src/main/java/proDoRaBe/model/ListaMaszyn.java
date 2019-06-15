@@ -20,7 +20,7 @@ public class ListaMaszyn {
     }
     public synchronized String dodajMaszyne(String nazwaMaszyny, Maszyna maszyna) {
         String wiadomosc;
-        if (nazwaMaszyny.equals("")) {
+        if (nazwaMaszyny.equals("")||nazwaMaszyny.equals("wprowadz dane")) {
             wiadomosc = "Nie podałęś nazwy maszyny";
             System.out.println(wiadomosc);
         } else if (maszyny.containsKey(nazwaMaszyny)) {
