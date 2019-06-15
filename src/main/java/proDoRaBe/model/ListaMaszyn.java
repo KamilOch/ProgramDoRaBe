@@ -9,6 +9,12 @@ public class ListaMaszyn {
     private Map<String, Maszyna> maszyny = new HashMap<>();
    String wiadomosc;
 
+   public ListaMaszyn(){
+       maszyny.put("a", new Maszyna("a", "a prd", "aaaa", null, null,null));
+       maszyny.put("b", new Maszyna("b", null, null, null, null,null));
+       maszyny.put("c", new Maszyna("c", null, null, null, null,null));
+   }
+
     public synchronized void  usunMaszyne(String nazwaMaszyny) {
         maszyny.remove(nazwaMaszyny);
     }

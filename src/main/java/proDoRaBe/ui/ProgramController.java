@@ -74,12 +74,13 @@ public class ProgramController {
     ){
         Maszyna mojaMaszyna = maszyny.podajMaszyny(wybranaMaszyna);
         if (mojaMaszyna != null) {
-            model.addAttribute("nazwaMaszyny", mojaMaszyna.getNazwaMaszyny());
-            model.addAttribute("producentMaszyny", mojaMaszyna.getProducentMaszyny());
-            model.addAttribute("typMaszyny", mojaMaszyna.getTypMaszyny());
-            model.addAttribute("numerMaszyny", mojaMaszyna.getNumerMaszyny());
-            model.addAttribute("dataProdukcji", mojaMaszyna.getDataProdukcji());
-            model.addAttribute("posiadaneCertyfikaty", mojaMaszyna.getPosiadaneCertyfikaty());
+//            model.addAttribute("nazwaMaszyny", mojaMaszyna.getNazwaMaszyny());
+//            model.addAttribute("producentMaszyny", mojaMaszyna.getProducentMaszyny());
+//            model.addAttribute("typMaszyny", mojaMaszyna.getTypMaszyny());
+//            model.addAttribute("numerMaszyny", mojaMaszyna.getNumerMaszyny());
+//            model.addAttribute("dataProdukcji", mojaMaszyna.getDataProdukcji());
+//            model.addAttribute("posiadaneCertyfikaty", mojaMaszyna.getPosiadaneCertyfikaty());
+            model.addAttribute("maszyna", mojaMaszyna);
         }
         return "edycjaMaszyny_form";
     }

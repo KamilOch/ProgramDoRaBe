@@ -16,15 +16,37 @@
 
         >Brak maszyn</option>
     </select>
-
     <p><input type="submit" value="Edytuj dodaną maszyne"/></p>
 </form>
+<ul>
+    <li th:each="maszyna : ${maszyny}"
+
+            th:text="${maszyna}"
+
+    >Brak maszyn</li>
+</ul>
+
+
+    <table>
+        <tr><th>Nazwa</th><th></th></tr>
+        <tr th:each="maszyna : ${maszyny}">
+            <td th:text="${maszyna}"></td><td>
+            <form action="usuwanieMaszyny" method="post">
+                <input th:value="${maszyna}" name="wybranaMaszyna" type="hidden"/>
+            <input type="submit" value="Usuń"/>
+            </form>
+            <a th:href="'edytowanie?wybranaMaszyna='+${maszyna}"><button>Edytuj</button></a></td>
+        </tr>
+    </table>
+
+
+
 
 <form action="/dodawanieMaszyny">
     <p><input type="submit" value=" Strona dodawania maszyny"/></p>
 </form>
 
-<form action="/usuwanie">
+<form action="/usuwanie" method="post">
     <p><input type="submit" value=" Strona usuwania maszyny"/></p>
 </form>
 

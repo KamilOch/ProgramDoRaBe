@@ -10,7 +10,7 @@
 <h2>Status procesu</h2>
 <div class="wiadomosc" th:text="${wiadomosc}"></div>
 <br/>
-<form action="/dodajMaszyne">
+<form action="/dodajMaszyne" method="post">
 
     <tr><th>Podaj nazwę maszyny</th></tr>
     <input type="text" name="nazwaMaszyny"/>
@@ -35,6 +35,19 @@
 <form action="/">
     <p><input type="submit" value="Powrót na stronę poczatkową"/></p>
 </form>
+
+<a href="/">
+    <p><input type="submit" value="Powrót na stronę poczatkową 22"/></p>
+</a>
+
+
+<a href="/">Powrót na stronę poczatkową 22</a>
+
+
+<a href="/">
+    <p><button>aaaaaa</button></p>
+</a>
+
 
 <h3>Obecnie podane dane to:</h3>
 <tr><th>Nazwa maszyny:</th></tr>

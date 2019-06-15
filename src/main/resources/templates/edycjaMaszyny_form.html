@@ -16,7 +16,7 @@
 
 
     <tr><th>Podaj producenta maszyny</th></tr>
-    <input type="text" name="producentMaszyny"/>
+    <input type="text" name="producentMaszyny" th:value="${producentMaszyny}"/>
     <tr><th>Podaj typ maszyny</th></tr>
     <input type="text" name="typMaszyny"/>
     <tr><th>Podaj numer maszynyu</th></tr>
@@ -45,7 +45,7 @@
 <div class="producentMaszyny" th:text="${producentMaszyny}"></div>
 
 <tr><th>Typ maszyny:</th></tr>
-<div class="typMaszyny" th:text="${typMaszyny}"></div>
+<div class="typMaszyny" th:text="${maszyna.typMaszyny}"></div>
 
 <tr><th>Numer maszyny</th></tr>
 <div class="numerMaszyny" th:text="${numerMaszyny}"></div>
