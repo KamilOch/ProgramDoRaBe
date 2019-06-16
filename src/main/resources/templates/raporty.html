@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Lista raportów</h1>
+
+    <table>
+        <tr><th>Nazwa</th><th></th></tr>
+        <tr th:each="maszyna : ${raporty}">
+            <td th:text="${maszyna}"></td><td>
+            <form action="usuwanieMaszyny" method="post">
+                <input th:value="${maszyna}" name="wybranaMaszyna" type="hidden"/>
+            <input type="submit" value="Usuń"/>
+            </form>
+            <a th:href="'edytowanie?wybranaMaszyna='+${maszyna}"><button>Edytuj</button></a></td>
+        </tr>
+    </table>
+
+
+
+<a href="/">
+    <p><button>Powrót na stronę poczatkową</button></p>
+</a>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package proDoRaBe.ui;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,12 @@ import java.io.UnsupportedEncodingException;
 
 @Controller
 public class ProgramController {
+
+    private final JdbcTemplate jdbcTemplate;
+
+    public ProgramController(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     private ListaMaszyn maszyny = new ListaMaszyn();
 
@@ -338,6 +345,12 @@ public class ProgramController {
     @RequestMapping("/")
     public String pierwszaStrona() {
         return "pierwszaStrona_form";
+    }
+
+    @RequestMapping("/raporty")
+    public String raporty(Model model) {
+        model.addAttribute("raporty", jdbcTemplate.queryForList("SELECT klient FROM public.reports", String.class));
+        return "raporty";
     }
 
 }
