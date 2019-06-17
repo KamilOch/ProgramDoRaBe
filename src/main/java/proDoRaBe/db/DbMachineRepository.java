@@ -1,24 +1,25 @@
 package proDoRaBe.db;
 
 import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import proDoRaBe.model.MachineRepository;
 import proDoRaBe.model.Maszyna;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 @Profile("!demo")
 class DbMachineRepository implements MachineRepository {
 
     private Map<String, Maszyna> maszyny = new HashMap<>();
+    private final JdbcTemplate jdbcTemplate;
 
-   public DbMachineRepository(){
-       maszyny.put("a db", new Maszyna("a db", "a prd db", "aaaa db", null, null,null));
-       maszyny.put("b db", new Maszyna("b db", "b pro db", "bbb db", null, null,null));
-       maszyny.put("c db", new Maszyna("c db", "c prod db", "ccc db", null, null,null));
+   public DbMachineRepository(JdbcTemplate jdbcTemplate){
+       this.jdbcTemplate = jdbcTemplate;
+//       maszyny.put("a db", new Maszyna("a db", "a prd db", "aaaa db", null, null,null));
+//       maszyny.put("b db", new Maszyna("b db", "b pro db", "bbb db", null, null,null));
+//       maszyny.put("c db", new Maszyna("c db", "c prod db", "ccc db", null, null,null));
    }
 
     @Override
@@ -49,7 +50,14 @@ class DbMachineRepository implements MachineRepository {
 
     @Override
     public synchronized Set<String> getAll() {
-        HashMap<String, Maszyna> kopiaMaszyn = new HashMap<>(maszyny);
-        return kopiaMaszyn.keySet();
-    }
+//        HashMap<String, Maszyna> kopiaMaszyn = new HashMap<>(maszyny);
+//        return kopiaMaszyn.keySet();
+        List <String> listaMaszyn = jdbcTemplate.queryForList("SELECT name FROM public.machines", String.class);
+//        Set<Maszyna> maszyny= new HashSet<Maszyna>();
+//        for (String nazwa: listaMaszyn
+//             ) {
+//            maszyny.add(new Maszyna(nazwa,null,null,null,null,null));
+//        }
+        return new HashSet<String>(listaMaszyn);
+   }
 }
