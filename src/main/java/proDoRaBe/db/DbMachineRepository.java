@@ -10,15 +10,15 @@ import java.util.Map;
 import java.util.Set;
 
 @Repository
-@Profile("demo")
-class MemoryMachineRepository implements MachineRepository {
+@Profile("!demo")
+class DbMachineRepository implements MachineRepository {
 
     private Map<String, Maszyna> maszyny = new HashMap<>();
 
-   public MemoryMachineRepository(){
-       maszyny.put("a", new Maszyna("a", "a prd", "aaaa", null, null,null));
-       maszyny.put("b", new Maszyna("b", "b pro", "bbb", null, null,null));
-       maszyny.put("c", new Maszyna("c", "c prod", "ccc", null, null,null));
+   public DbMachineRepository(){
+       maszyny.put("a db", new Maszyna("a db", "a prd db", "aaaa db", null, null,null));
+       maszyny.put("b db", new Maszyna("b db", "b pro db", "bbb db", null, null,null));
+       maszyny.put("c db", new Maszyna("c db", "c prod db", "ccc db", null, null,null));
    }
 
     @Override
