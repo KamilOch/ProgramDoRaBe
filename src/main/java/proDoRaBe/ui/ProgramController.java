@@ -16,11 +16,11 @@ import java.io.UnsupportedEncodingException;
 @Controller
 public class ProgramController {
 
-    public ProgramController(ReportRepository reportRepository) {
-        this.reportRepository = reportRepository;
+    public ProgramController(ReportService reportService) {
+        this.reportService = reportService;
     }
 
-    private final ReportRepository reportRepository;
+    private final ReportService reportService;
 
     private ListaMaszyn maszyny = new ListaMaszyn();
 
@@ -351,7 +351,7 @@ public class ProgramController {
     public String raporty(
             Model model
     ){
-        model.addAttribute("raporty", reportRepository.getAll());
+        model.addAttribute("raporty", reportService.getAll());
         return "raporty";
     }
 
