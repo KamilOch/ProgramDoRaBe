@@ -16,11 +16,13 @@ import java.io.UnsupportedEncodingException;
 @Controller
 public class ProgramController {
 
-    public ProgramController(ReportService reportService) {
+    public ProgramController(ReportService reportService, MaschinService maschinService) {
         this.reportService = reportService;
+        this.maschinService = maschinService;
     }
 
     private final ReportService reportService;
+    private final MaschinService maschinService;
 
     private MaschineRepository maszyny = new MaschineRepository();
 
@@ -53,7 +55,8 @@ public class ProgramController {
             @RequestParam(value = "wybranaMaszyna", required = false) String nazwaMaszyny,
             Model model
     ){
-        maszyny.usunMaszyne(nazwaMaszyny);
+        //maszyny.usunMaszyne(nazwaMaszyny);
+        maschinService.usun(nazwaMaszyny);
         return "redirect:/listaMaszyn";
     }
     @RequestMapping("/edytowanieMaszyny")
@@ -67,6 +70,7 @@ public class ProgramController {
             Model model
     ){
         maszyny.usunMaszyne(nazwaMaszyny);
+        //maschinService.usun(nazwaMaszyny);
         Maszyna nowaMaszyna = new Maszyna (nazwaMaszyny,producentMaszyny, typMaszyny,numerMaszyny,dataProdukcji, posiadaneCertyfikaty);
         maszyny.dodajMaszyne(nazwaMaszyny,nowaMaszyna);
 
@@ -87,7 +91,8 @@ public class ProgramController {
     public String listaMaszyn (
             Model model
     ){
-        model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
+       // model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
+        model.addAttribute("maszyny",maschinService.getAll());
 
         return "listaMaszyn_form";
     }

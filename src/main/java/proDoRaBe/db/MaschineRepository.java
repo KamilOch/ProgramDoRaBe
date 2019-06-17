@@ -1,11 +1,13 @@
 package proDoRaBe.db;
 
+import org.springframework.stereotype.Repository;
 import proDoRaBe.model.Maszyna;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+@Repository
 public class MaschineRepository {
 
     private Map<String, Maszyna> maszyny = new HashMap<>();
@@ -36,13 +38,11 @@ public class MaschineRepository {
     }
 
     public synchronized Maszyna podajMaszyny(String kto) {
-
         return maszyny.get(kto);
     }
 
     public synchronized Set<String> podajNazwyMaszyn() {
         HashMap<String, Maszyna> kopiaMaszyn = new HashMap<>(maszyny);
         return kopiaMaszyn.keySet();
-
     }
 }
