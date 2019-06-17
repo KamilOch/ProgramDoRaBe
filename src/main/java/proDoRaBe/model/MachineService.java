@@ -1,7 +1,6 @@
 package proDoRaBe.model;
 
 import org.springframework.stereotype.Service;
-import proDoRaBe.db.MachineRepository;
 
 import java.util.Set;
 
