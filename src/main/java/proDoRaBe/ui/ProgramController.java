@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import proDoRaBe.db.ReportRepository;
 import proDoRaBe.model.Raport;
 import proDoRaBe.model.*;
 
@@ -20,7 +21,10 @@ public class ProgramController {
 
     public ProgramController(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        reportRepository = new ReportRepository(jdbcTemplate);
     }
+
+    private ReportRepository reportRepository;
 
     private ListaMaszyn maszyny = new ListaMaszyn();
 
@@ -348,8 +352,10 @@ public class ProgramController {
     }
 
     @RequestMapping("/raporty")
-    public String raporty(Model model) {
-        model.addAttribute("raporty", jdbcTemplate.queryForList("SELECT klient FROM public.reports", String.class));
+    public String raporty(
+            Model model
+    ){
+        model.addAttribute("raporty", reportRepository.baza());
         return "raporty";
     }
 
