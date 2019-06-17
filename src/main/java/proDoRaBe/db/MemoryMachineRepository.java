@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Repository
-public class MemoryMachineRepository implements MachineRepository {
+class MemoryMachineRepository implements MachineRepository {
 
     private Map<String, Maszyna> maszyny = new HashMap<>();
 

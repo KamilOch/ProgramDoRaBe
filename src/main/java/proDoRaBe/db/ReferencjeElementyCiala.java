@@ -2,7 +2,7 @@ package proDoRaBe.db;
 
 import java.util.List;
 
-public class ReferencjeElementyCiala {
+class ReferencjeElementyCiala {
 
     List<String> elementyCiala;
 

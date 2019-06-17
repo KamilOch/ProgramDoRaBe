@@ -2,7 +2,7 @@ package proDoRaBe.db;
 
 import java.util.HashMap;
 
-public class ReferencjeCzestotliwoscCzasEkspozycji {
+class ReferencjeCzestotliwoscCzasEkspozycji {
 
     HashMap<String, Double> listaCzestotliwoscCzasEkspozycji;
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 @Profile("demo")
-public class MemoryReportRepository implements ReportRepository {
+class MemoryReportRepository implements ReportRepository {
     @Override
     public List<String> getAll() {
         List<String> mojaLista = new ArrayList<>();

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 @Profile("!demo")
-public class DbReportRepository implements ReportRepository {
+class DbReportRepository implements ReportRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
