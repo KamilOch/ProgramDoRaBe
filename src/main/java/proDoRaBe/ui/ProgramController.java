@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import proDoRaBe.db.ReportRepository;
 import proDoRaBe.model.Raport;
 import proDoRaBe.model.*;
 
@@ -22,7 +21,7 @@ public class ProgramController {
 
     private final ReportService reportService;
 
-    private ListaMaszyn maszyny = new ListaMaszyn();
+    private MaschineRepository maszyny = new MaschineRepository();
 
     DaneZamawiajacegoRaport daneZamawiajacegoRaport = new DaneZamawiajacegoRaport();
     DaneWykonujacegoRaport daneWykonujacegoRaport = new DaneWykonujacegoRaport();

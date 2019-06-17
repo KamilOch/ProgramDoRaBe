@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class ListaMaszyn {
+public class MaschineRepository {
 
     private Map<String, Maszyna> maszyny = new HashMap<>();
 
-   public ListaMaszyn(){
+   public MaschineRepository(){
        maszyny.put("a", new Maszyna("a", "a prd", "aaaa", null, null,null));
        maszyny.put("b", new Maszyna("b", "b pro", "bbb", null, null,null));
        maszyny.put("c", new Maszyna("c", "c prod", "ccc", null, null,null));
