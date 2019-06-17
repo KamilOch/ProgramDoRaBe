@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import proDoRaBe.db.MaschineRepository;
+import proDoRaBe.db.MachineRepository;
 import proDoRaBe.model.Raport;
 import proDoRaBe.model.*;
 
@@ -16,15 +16,15 @@ import java.io.UnsupportedEncodingException;
 @Controller
 public class ProgramController {
 
-    public ProgramController(ReportService reportService, MaschinService maschinService) {
+    public ProgramController(ReportService reportService, MachineService machineService) {
         this.reportService = reportService;
-        this.maschinService = maschinService;
+        this.machineService = machineService;
     }
 
     private final ReportService reportService;
-    private final MaschinService maschinService;
+    private final MachineService machineService;
 
-    private MaschineRepository maszyny = new MaschineRepository();
+    private MachineRepository maszyny = new MachineRepository();
 
     DaneZamawiajacegoRaport daneZamawiajacegoRaport = new DaneZamawiajacegoRaport();
     DaneWykonujacegoRaport daneWykonujacegoRaport = new DaneWykonujacegoRaport();
@@ -55,8 +55,7 @@ public class ProgramController {
             @RequestParam(value = "wybranaMaszyna", required = false) String nazwaMaszyny,
             Model model
     ){
-        //maszyny.usunMaszyne(nazwaMaszyny);
-        maschinService.usun(nazwaMaszyny);
+        machineService.delete(nazwaMaszyny);
         return "redirect:/listaMaszyn";
     }
     @RequestMapping("/edytowanieMaszyny")
@@ -69,8 +68,7 @@ public class ProgramController {
             @RequestParam(value = "posiadaneCertyfikaty", required = false) String posiadaneCertyfikaty,
             Model model
     ){
-        maszyny.usunMaszyne(nazwaMaszyny);
-        //maschinService.usun(nazwaMaszyny);
+        machineService.delete(nazwaMaszyny);
         Maszyna nowaMaszyna = new Maszyna (nazwaMaszyny,producentMaszyny, typMaszyny,numerMaszyny,dataProdukcji, posiadaneCertyfikaty);
         maszyny.dodajMaszyne(nazwaMaszyny,nowaMaszyna);
 
@@ -92,7 +90,7 @@ public class ProgramController {
             Model model
     ){
        // model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
-        model.addAttribute("maszyny",maschinService.getAll());
+        model.addAttribute("maszyny",machineService.getAll());
 
         return "listaMaszyn_form";
     }

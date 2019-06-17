@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Set;
 
 @Repository
-public class MaschineRepository {
+public class MachineRepository {
 
     private Map<String, Maszyna> maszyny = new HashMap<>();
 
-   public MaschineRepository(){
+   public MachineRepository(){
        maszyny.put("a", new Maszyna("a", "a prd", "aaaa", null, null,null));
        maszyny.put("b", new Maszyna("b", "b pro", "bbb", null, null,null));
        maszyny.put("c", new Maszyna("c", "c prod", "ccc", null, null,null));
