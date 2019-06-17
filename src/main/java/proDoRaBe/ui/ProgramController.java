@@ -17,14 +17,11 @@ import java.io.UnsupportedEncodingException;
 @Controller
 public class ProgramController {
 
-    private final JdbcTemplate jdbcTemplate;
-
-    public ProgramController(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-        reportRepository = new ReportRepository(jdbcTemplate);
+    public ProgramController(ReportRepository reportRepository) {
+        this.reportRepository = reportRepository;
     }
 
-    private ReportRepository reportRepository;
+    private final ReportRepository reportRepository;
 
     private ListaMaszyn maszyny = new ListaMaszyn();
 

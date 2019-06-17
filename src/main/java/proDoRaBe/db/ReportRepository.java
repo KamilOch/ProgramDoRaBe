@@ -1,10 +1,12 @@
 package proDoRaBe.db;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
 
+@Repository
 public class ReportRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -16,5 +18,4 @@ public class ReportRepository {
    public List<String> baza (){
        return  jdbcTemplate.queryForList("SELECT klient FROM public.reports", String.class);
    }
-
 }
