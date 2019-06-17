@@ -1,6 +1,5 @@
 package proDoRaBe.ui;
 
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -352,7 +351,7 @@ public class ProgramController {
     public String raporty(
             Model model
     ){
-        model.addAttribute("raporty", reportRepository.baza());
+        model.addAttribute("raporty", reportRepository.getAll());
         return "raporty";
     }
 

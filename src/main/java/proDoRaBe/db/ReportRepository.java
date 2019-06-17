@@ -15,7 +15,7 @@ public class ReportRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-   public List<String> baza (){
+   public List<String> getAll(){
        return  jdbcTemplate.queryForList("SELECT klient FROM public.reports", String.class);
    }
 }
