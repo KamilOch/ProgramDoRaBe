@@ -24,7 +24,6 @@ public class ProgramController {
     private final ReportService reportService;
     private final MachineService machineService;
 
-    private MachineRepository maszyny = new MachineRepository();
 
     DaneZamawiajacegoRaport daneZamawiajacegoRaport = new DaneZamawiajacegoRaport();
     DaneWykonujacegoRaport daneWykonujacegoRaport = new DaneWykonujacegoRaport();
@@ -70,7 +69,7 @@ public class ProgramController {
     ){
         machineService.delete(nazwaMaszyny);
         Maszyna nowaMaszyna = new Maszyna (nazwaMaszyny,producentMaszyny, typMaszyny,numerMaszyny,dataProdukcji, posiadaneCertyfikaty);
-        maszyny.dodajMaszyne(nazwaMaszyny,nowaMaszyna);
+        machineService.add(nazwaMaszyny,nowaMaszyna);
 
         return "redirect:/edytowanie?wybranaMaszyna="+nazwaMaszyny;
     }
@@ -79,7 +78,8 @@ public class ProgramController {
             @RequestParam(value = "wybranaMaszyna", required = false) String wybranaMaszyna,
             Model model
     ){
-        Maszyna mojaMaszyna = maszyny.podajMaszyny(wybranaMaszyna);
+        //Maszyna mojaMaszyna = maszyny.get(wybranaMaszyna);
+        Maszyna mojaMaszyna = machineService.get(wybranaMaszyna);
         if (mojaMaszyna != null) {
               model.addAttribute("maszyna", mojaMaszyna);
         }
@@ -89,7 +89,7 @@ public class ProgramController {
     public String listaMaszyn (
             Model model
     ){
-       // model.addAttribute("maszyny",maszyny.podajNazwyMaszyn());
+       // model.addAttribute("maszyny",maszyny.getAll());
         model.addAttribute("maszyny",machineService.getAll());
 
         return "listaMaszyn_form";
@@ -106,7 +106,7 @@ public class ProgramController {
     ) {
         Maszyna maszyna = new Maszyna(nazwaMaszyny,producentMaszyny,typMaszyny,numerMaszyny,dataProdukcji,posiadaneCertyfikaty);
 
-        String wiadomosc = encodeValue(maszyny.dodajMaszyne(nazwaMaszyny,maszyna));
+        String wiadomosc = encodeValue(machineService.add(nazwaMaszyny,maszyna));
 
         return "redirect:/dodawanieMaszyny?nazwaMaszyny="+nazwaMaszyny+"&wiadomosc="+wiadomosc;
     }
@@ -116,7 +116,7 @@ public class ProgramController {
             @RequestParam(value = "wiadomosc", required = false) String wiadomosc,
             Model model
     ) {
-        Maszyna mojaMaszyna = maszyny.podajMaszyny(nazwaMaszyny);
+        Maszyna mojaMaszyna = machineService.get(nazwaMaszyny);
         if (mojaMaszyna == null) {
             mojaMaszyna = new Maszyna("wprowadz dane", "wprowadz dane", "wprowadz dane", "wprowadz dane", "wprowadz dane", "wprowadz dane");
         }

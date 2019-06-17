@@ -18,10 +18,10 @@ public class MachineRepository {
        maszyny.put("c", new Maszyna("c", "c prod", "ccc", null, null,null));
    }
 
-    public synchronized void  usunMaszyne(String nazwaMaszyny) {
+    public synchronized void delete(String nazwaMaszyny) {
         maszyny.remove(nazwaMaszyny);
     }
-    public synchronized String dodajMaszyne(String nazwaMaszyny, Maszyna maszyna) {
+    public synchronized String add(String nazwaMaszyny, Maszyna maszyna) {
         String wiadomosc;
         if (nazwaMaszyny.equals("")||nazwaMaszyny.equals("wprowadz dane")) {
             wiadomosc = "Nie podałęś nazwy maszyny";
@@ -37,11 +37,11 @@ public class MachineRepository {
         return wiadomosc;
     }
 
-    public synchronized Maszyna podajMaszyny(String kto) {
-        return maszyny.get(kto);
+    public synchronized Maszyna get(String id) {
+        return maszyny.get(id);
     }
 
-    public synchronized Set<String> podajNazwyMaszyn() {
+    public synchronized Set<String> getAll() {
         HashMap<String, Maszyna> kopiaMaszyn = new HashMap<>(maszyny);
         return kopiaMaszyn.keySet();
     }

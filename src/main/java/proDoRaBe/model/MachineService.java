@@ -15,9 +15,17 @@ public class MachineService {
     private final MachineRepository machineRepository;
 
     public  void delete(String nazwaMaszyny) {
-        machineRepository.usunMaszyne(nazwaMaszyny);
+        machineRepository.delete(nazwaMaszyny);
+    }
+
+    public String add(String nazwaMaszyny, Maszyna maszyna) {
+        return machineRepository.add(nazwaMaszyny,maszyna);
+    }
+
+    public  Maszyna get(String id) {
+        return machineRepository.get(id);
     }
     public  Set<String> getAll () {
-        return machineRepository.podajNazwyMaszyn();
+        return machineRepository.getAll();
     }
 }
