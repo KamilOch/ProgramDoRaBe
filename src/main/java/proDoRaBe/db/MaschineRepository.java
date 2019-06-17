@@ -1,4 +1,6 @@
-package proDoRaBe.model;
+package proDoRaBe.db;
+
+import proDoRaBe.model.Maszyna;
 
 import java.util.HashMap;
 import java.util.Map;
