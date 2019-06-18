@@ -17,15 +17,13 @@ class DbMachineRepository implements MachineRepository {
 
    public DbMachineRepository(JdbcTemplate jdbcTemplate){
        this.jdbcTemplate = jdbcTemplate;
-//       maszyny.put("a db", new Maszyna("a db", "a prd db", "aaaa db", null, null,null));
-//       maszyny.put("b db", new Maszyna("b db", "b pro db", "bbb db", null, null,null));
-//       maszyny.put("c db", new Maszyna("c db", "c prod db", "ccc db", null, null,null));
    }
 
     @Override
     public synchronized void delete(String nazwaMaszyny) {
-        maszyny.remove(nazwaMaszyny);
+       jdbcTemplate.update("DELETE FROM public.machines WHERE name = ?", new Object[] { nazwaMaszyny });
     }
+
     @Override
     public synchronized String add(String nazwaMaszyny, Maszyna maszyna) {
         String wiadomosc;
