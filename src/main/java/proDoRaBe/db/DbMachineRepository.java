@@ -27,14 +27,20 @@ class DbMachineRepository implements MachineRepository {
     @Override
     public synchronized String add(String nazwaMaszyny, Maszyna maszyna) {
         String wiadomosc;
+
+
         if (nazwaMaszyny.equals("")||nazwaMaszyny.equals("wprowadz dane")) {
             wiadomosc = "Nie podałęś nazwy maszyny";
             System.out.println(wiadomosc);
-        } else if (maszyny.containsKey(nazwaMaszyny)) {
+        //} else if (maszyny.containsKey(nazwaMaszyny)) {
+        } else if (getAll().contains(nazwaMaszyny)) {
             wiadomosc = "Podałeś "+nazwaMaszyny+" ale taka maszyna już istnieje, podaj inną nazwę";
             System.out.println(wiadomosc);
         }   else {
-            maszyny.put(nazwaMaszyny, maszyna);
+            jdbcTemplate.update(
+                    "INSERT INTO public.machines (name, manufacturer, type, number, produtiondate, certificats) VALUES (?, ?, ?, ?, ?, ?)",
+                    nazwaMaszyny, maszyna.getProducentMaszyny(),maszyna.getTypMaszyny(), maszyna.getNumerMaszyny(),maszyna.getDataProdukcji(), maszyna.getPosiadaneCertyfikaty()
+            );
             wiadomosc =  "Dodano nową maszynę o nazwie "+nazwaMaszyny;
             System.out.println(wiadomosc);
         }
@@ -48,14 +54,7 @@ class DbMachineRepository implements MachineRepository {
 
     @Override
     public synchronized Set<String> getAll() {
-//        HashMap<String, Maszyna> kopiaMaszyn = new HashMap<>(maszyny);
-//        return kopiaMaszyn.keySet();
         List <String> listaMaszyn = jdbcTemplate.queryForList("SELECT name FROM public.machines", String.class);
-//        Set<Maszyna> maszyny= new HashSet<Maszyna>();
-//        for (String nazwa: listaMaszyn
-//             ) {
-//            maszyny.add(new Maszyna(nazwa,null,null,null,null,null));
-//        }
         return new HashSet<String>(listaMaszyn);
    }
 }
