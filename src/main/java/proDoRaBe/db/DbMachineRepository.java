@@ -2,11 +2,16 @@ package proDoRaBe.db;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import proDoRaBe.model.MachineRepository;
 import proDoRaBe.model.Maszyna;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
+
+import static javafx.scene.input.KeyCode.T;
 
 @Repository
 @Profile("!demo")
@@ -32,7 +37,6 @@ class DbMachineRepository implements MachineRepository {
         if (nazwaMaszyny.equals("")||nazwaMaszyny.equals("wprowadz dane")) {
             wiadomosc = "Nie podałęś nazwy maszyny";
             System.out.println(wiadomosc);
-        //} else if (maszyny.containsKey(nazwaMaszyny)) {
         } else if (getAll().contains(nazwaMaszyny)) {
             wiadomosc = "Podałeś "+nazwaMaszyny+" ale taka maszyna już istnieje, podaj inną nazwę";
             System.out.println(wiadomosc);
@@ -49,7 +53,15 @@ class DbMachineRepository implements MachineRepository {
 
     @Override
     public synchronized Maszyna get(String id) {
-        return maszyny.get(id);
+        //Maszyna maszynaZwracana = (Maszyna)jdbcTemplate.queryForObject("SELECT * FROM public.machines WHERE name = ?",new Object[] { id });
+        //Maszyna maszynaZwracana = (Maszyna) jdbcTemplate.queryForObject("SELECT * FROM public.machines WHERE name = ?",new Object[] { id },  Maszyna.class);
+        return jdbcTemplate.queryForObject("SELECT * FROM public.machines WHERE name = ?", new RowMapper<Maszyna> () {
+            @Override
+            public Maszyna mapRow(ResultSet rs, int rownumber) throws SQLException {
+                Maszyna m = new Maszyna(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                return m;
+            }
+        } , new Object[] { id });
     }
 
     @Override
