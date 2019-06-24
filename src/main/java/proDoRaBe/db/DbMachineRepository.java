@@ -6,12 +6,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import proDoRaBe.model.MachineRepository;
 import proDoRaBe.model.Maszyna;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
-
-import static javafx.scene.input.KeyCode.T;
 
 @Repository
 @Profile("!demo")
@@ -53,8 +50,10 @@ class DbMachineRepository implements MachineRepository {
 
     @Override
     public synchronized Maszyna get(String id) {
-        //Maszyna maszynaZwracana = (Maszyna)jdbcTemplate.queryForObject("SELECT * FROM public.machines WHERE name = ?",new Object[] { id });
-        //Maszyna maszynaZwracana = (Maszyna) jdbcTemplate.queryForObject("SELECT * FROM public.machines WHERE name = ?",new Object[] { id },  Maszyna.class);
+       if (id == null){
+           return null;
+       } else
+
         return jdbcTemplate.queryForObject("SELECT * FROM public.machines WHERE name = ?", new RowMapper<Maszyna> () {
             @Override
             public Maszyna mapRow(ResultSet rs, int rownumber) throws SQLException {
